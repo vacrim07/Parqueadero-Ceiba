@@ -1,9 +1,13 @@
 package com.example.inadn.demo.controller.buissinesRules.impl;
 
+import com.example.inadn.demo.model.impl.consts.VehicleType;
+
 public class CheckMethods {
 	
-	public boolean testMethod(Integer number) {
-		return number < 10 ? true : false;
+	public Integer getMaximumVehicles(String vehicleType) {
+		return vehicleType.equalsIgnoreCase(VehicleType.CAR.getType()) ? 20 : 10;
 	}
+	
+	
 
 }
