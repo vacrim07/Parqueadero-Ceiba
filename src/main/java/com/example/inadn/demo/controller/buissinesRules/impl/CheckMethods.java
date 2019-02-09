@@ -1,13 +1,17 @@
 package com.example.inadn.demo.controller.buissinesRules.impl;
 
+import com.example.inadn.demo.controller.buissinesRules.impl.consts.MaximumVehicles;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 public class CheckMethods {
 	
 	public Integer getMaximumVehicles(String vehicleType) {
-		return vehicleType.equalsIgnoreCase(VehicleType.CAR.getType()) ? 20 : 10;
+		return vehicleType.equalsIgnoreCase(VehicleType.CAR.getType()) ?
+				MaximumVehicles.CAR.getMaximum() : MaximumVehicles.MOTORCYCLE.getMaximum();
 	}
 	
-	
+	public boolean isParkingFull(Integer id, Integer total) {
+		return id < total ? true : false;
+	}
 
 }
