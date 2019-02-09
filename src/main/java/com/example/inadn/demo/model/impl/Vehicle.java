@@ -1,20 +1,20 @@
 package com.example.inadn.demo.model.impl;
 
-import com.example.inadn.demo.model.impl.consts.vehicleType;
+import com.example.inadn.demo.model.impl.consts.VehicleType;
 
-public class vehicle {
+public class Vehicle {
 	
 	private Integer id;
 	
-	private vehicleType type;
+	private VehicleType type;
 	
 	private String badge;
 
-	public vehicle() {
+	public Vehicle() {
 		super();
 	}
 
-	public vehicle(Integer id, vehicleType type, String badge) {
+	public Vehicle(Integer id, VehicleType type, String badge) {
 		super();
 		this.id = id;
 		this.type = type;
@@ -29,11 +29,11 @@ public class vehicle {
 		this.id = id;
 	}
 
-	public vehicleType getType() {
+	public VehicleType getType() {
 		return type;
 	}
 
-	public void setType(vehicleType type) {
+	public void setType(VehicleType type) {
 		this.type = type;
 	}
 

@@ -1,14 +1,14 @@
 package com.example.inadn.demo.model.impl;
 
-public class motorcycle extends vehicle{
+public class Motorcycle extends Vehicle{
 	
 	private int engineCapacity;
 
-	public motorcycle() {
+	public Motorcycle() {
 		super();
 	}
 
-	public motorcycle(int engineCapacity) {
+	public Motorcycle(int engineCapacity) {
 		super();
 		this.engineCapacity = engineCapacity;
 	}

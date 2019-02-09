@@ -2,27 +2,27 @@ package com.example.inadn.demo.model.impl;
 
 import java.util.Date;
 
-import com.example.inadn.demo.model.impl.consts.parkingState;
+import com.example.inadn.demo.model.impl.consts.ParkingState;
 
-public class parking {
+public class Parking {
 	
 	private Integer id;
 	
-	private parkingState state;
+	private ParkingState state;
 	
-	private money price;
+	private Money price;
 	
-	private vehicle vehicle;
+	private Vehicle vehicle;
 	
 	private Date startDate;
 	
 	private Date endDate;
 
-	public parking() {
+	public Parking() {
 		super();
 	}
 
-	public parking(Integer id, parkingState state, money price, com.example.inadn.demo.model.impl.vehicle vehicle,
+	public Parking(Integer id, ParkingState state, Money price, com.example.inadn.demo.model.impl.Vehicle vehicle,
 			Date startDate, Date endDate) {
 		super();
 		this.id = id;
@@ -41,27 +41,27 @@ public class parking {
 		this.id = id;
 	}
 
-	public parkingState getState() {
+	public ParkingState getState() {
 		return state;
 	}
 
-	public void setState(parkingState state) {
+	public void setState(ParkingState state) {
 		this.state = state;
 	}
 
-	public money getPrice() {
+	public Money getPrice() {
 		return price;
 	}
 
-	public void setPrice(money price) {
+	public void setPrice(Money price) {
 		this.price = price;
 	}
 
-	public vehicle getVehicle() {
+	public Vehicle getVehicle() {
 		return vehicle;
 	}
 
-	public void setVehicle(vehicle vehicle) {
+	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
 
