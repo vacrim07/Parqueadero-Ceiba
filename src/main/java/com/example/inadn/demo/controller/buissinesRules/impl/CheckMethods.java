@@ -10,8 +10,8 @@ public class CheckMethods {
 				MaximumVehicles.CAR.getMaximum() : MaximumVehicles.MOTORCYCLE.getMaximum();
 	}
 	
-	public boolean isParkingFull(Integer id, Integer total) {
-		return id < total ? true : false;
+	public boolean isParkingAvailable(Integer id, Integer total) {
+		return id <= total ? true : false;
 	}
 
 }
