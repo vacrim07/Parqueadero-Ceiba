@@ -1,5 +1,7 @@
 package com.example.inadn.demo.model.impl;
 
+import java.math.BigDecimal;
+
 public class money {
 	
 	private String currency;
