@@ -26,13 +26,13 @@ public class AllowedVehiclesTest {
 		String bike = "bike";
 		
 		AllowedVehicles testAllowedVehicles = new AllowedVehicles();
-		boolean carTest = testAllowedVehicles.isVehicleAllowed(car);
-		boolean motorcycleTest = testAllowedVehicles.isVehicleAllowed(motorcycle);
-		boolean bikeTest = testAllowedVehicles.isVehicleAllowed(bike);
+		boolean case1 = testAllowedVehicles.isVehicleAllowed(car);
+		boolean case2 = testAllowedVehicles.isVehicleAllowed(motorcycle);
+		boolean case3 = testAllowedVehicles.isVehicleAllowed(bike);
 		
-		assertEquals(true,carTest);
-		assertEquals(true,motorcycleTest);
-		assertEquals(false,bikeTest);
+		assertEquals(true,case1);
+		assertEquals(true,case2);
+		assertEquals(false,case3);
 	}
 	
 	@Test
@@ -57,13 +57,13 @@ public class AllowedVehiclesTest {
 		Integer tuesday = Calendar.TUESDAY;
 		
 		AllowedVehicles testAllowedVehicles = new AllowedVehicles();
-		boolean sundayTest = testAllowedVehicles.isARestrictedDay(sunday);
-		boolean mondayTest = testAllowedVehicles.isARestrictedDay(monday);
-		boolean tuesdayTest = testAllowedVehicles.isARestrictedDay(tuesday);
+		boolean case1 = testAllowedVehicles.isARestrictedDay(sunday);
+		boolean case2 = testAllowedVehicles.isARestrictedDay(monday);
+		boolean case3 = testAllowedVehicles.isARestrictedDay(tuesday);
 		
-		assertEquals(false,sundayTest);
-		assertEquals(false,mondayTest);
-		assertEquals(true,tuesdayTest);
+		assertEquals(false,case1);
+		assertEquals(false,case2);
+		assertEquals(true,case3);
 	}
 	
 	@Test
@@ -73,15 +73,15 @@ public class AllowedVehiclesTest {
 		boolean dayRestricted = true;
 		
 		AllowedVehicles testAllowedVehicles = new AllowedVehicles();
-		boolean caseOne = testAllowedVehicles.isAnAllowedCar(badgeRestricted, dayRestricted);
-		boolean caseTwo = testAllowedVehicles.isAnAllowedCar(!badgeRestricted, dayRestricted);
-		boolean caseThree = testAllowedVehicles.isAnAllowedCar(badgeRestricted, !dayRestricted);
-		boolean caseFour = testAllowedVehicles.isAnAllowedCar(!badgeRestricted, !dayRestricted);
+		boolean case1 = testAllowedVehicles.isAnAllowedCar(badgeRestricted, dayRestricted);
+		boolean case2 = testAllowedVehicles.isAnAllowedCar(!badgeRestricted, dayRestricted);
+		boolean case3 = testAllowedVehicles.isAnAllowedCar(badgeRestricted, !dayRestricted);
+		boolean case4 = testAllowedVehicles.isAnAllowedCar(!badgeRestricted, !dayRestricted);
 		
-		assertEquals(false,caseOne);
-		assertEquals(true,caseTwo);
-		assertEquals(true,caseThree);
-		assertEquals(true,caseFour);
+		assertEquals(false,case1);
+		assertEquals(true,case2);
+		assertEquals(true,case3);
+		assertEquals(true,case4);
 	}
 	
 	

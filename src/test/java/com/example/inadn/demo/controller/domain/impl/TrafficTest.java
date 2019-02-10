@@ -21,11 +21,11 @@ public class TrafficTest {
 		Integer numberTwo = 0;
 		
 		Traffic traffic = new Traffic();
-		int caseOne = traffic.vehicleCheckOut(numberOne);
-		int caseTwo = traffic.vehicleCheckOut(numberTwo);
+		int case1 = traffic.vehicleCheckOut(numberOne);
+		int case2 = traffic.vehicleCheckOut(numberTwo);
 		
-		assertEquals(0,caseOne);
-		assertEquals(0,caseTwo);
+		assertEquals(0,case1);
+		assertEquals(0,case2);
 	}
 
 }

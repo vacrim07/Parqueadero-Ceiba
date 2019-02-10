@@ -23,11 +23,11 @@ public class MaximumVehiclesTest {
 		String motorcycle = VehicleType.MOTORCYCLE.getType();
 		
 		MaximumVehicles maximumVehicles = new MaximumVehicles();
-		int totalCars = maximumVehicles.getMaximumVehicles(car);
-		int totalMotorcycles = maximumVehicles.getMaximumVehicles(motorcycle);
+		int case1 = maximumVehicles.getMaximumVehicles(car);
+		int case2 = maximumVehicles.getMaximumVehicles(motorcycle);
 		
-		assertEquals(20,totalCars);
-		assertEquals(10,totalMotorcycles);
+		assertEquals(20,case1);
+		assertEquals(10,case2);
 	}
 	
 	@Test
@@ -37,15 +37,15 @@ public class MaximumVehiclesTest {
 		Integer positionMotorcycle = 11;
 		
 		MaximumVehicles maximumVehicles = new MaximumVehicles();
-		boolean carsFull = maximumVehicles.isParkingAvailable(positionCar, MaximumVehiclesPerType.CAR.getMaximum());
-		boolean motorcyclesFull = maximumVehicles.isParkingAvailable(positionMotorcycle, MaximumVehiclesPerType.MOTORCYCLE.getMaximum());
-		boolean carsNotFull = maximumVehicles.isParkingAvailable(positionCar-1, MaximumVehiclesPerType.CAR.getMaximum());
-		boolean motorcyclesNotFull = maximumVehicles.isParkingAvailable(positionMotorcycle-1, MaximumVehiclesPerType.MOTORCYCLE.getMaximum());
+		boolean case1 = maximumVehicles.isParkingAvailable(positionCar, MaximumVehiclesPerType.CAR.getMaximum());
+		boolean case2 = maximumVehicles.isParkingAvailable(positionMotorcycle, MaximumVehiclesPerType.MOTORCYCLE.getMaximum());
+		boolean case3 = maximumVehicles.isParkingAvailable(positionCar-1, MaximumVehiclesPerType.CAR.getMaximum());
+		boolean case4 = maximumVehicles.isParkingAvailable(positionMotorcycle-1, MaximumVehiclesPerType.MOTORCYCLE.getMaximum());
 		
-		assertEquals(false,carsFull);
-		assertEquals(false,motorcyclesFull);
-		assertEquals(true,carsNotFull);
-		assertEquals(true,motorcyclesNotFull);
+		assertEquals(false,case1);
+		assertEquals(false,case2);
+		assertEquals(true,case3);
+		assertEquals(true,case4);
 	}
 
 }
