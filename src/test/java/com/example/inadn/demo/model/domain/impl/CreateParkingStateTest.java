@@ -3,6 +3,8 @@ package com.example.inadn.demo.model.domain.impl;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import java.util.Calendar;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.inadn.demo.DemoApplication;
+import com.example.inadn.demo.model.domain.impl.consts.BadgeRestriction;
 import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerType;
 import com.example.inadn.demo.model.impl.Parking;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
@@ -53,6 +56,72 @@ public class CreateParkingStateTest {
 		
 		assertEquals(false,case1);
 		assertEquals(false,case2);
+		assertEquals(true,case3);
+		assertEquals(true,case4);
+	}
+	
+	@Test
+	public void isVehicleAllowed() {
+		
+		String car = VehicleType.CAR.getType();
+		String motorcycle = VehicleType.MOTORCYCLE.getType();
+		String bike = "bike";
+		CreateParkingState create = new CreateParkingState();
+		
+		boolean case1 = create.isVehicleAllowed(car);
+		boolean case2 = create.isVehicleAllowed(motorcycle);
+		boolean case3 = create.isVehicleAllowed(bike);
+		
+		assertEquals(true,case1);
+		assertEquals(true,case2);
+		assertEquals(false,case3);
+	}
+	
+	@Test
+	public void isBadgeRestricted() {
+		
+		String a = BadgeRestriction.A.getRestriction();
+		String anotherString = "F";
+		CreateParkingState create = new CreateParkingState();
+		
+		boolean aTest = create.isBadgeRestricted(a);
+		boolean anotherStringTest = create.isBadgeRestricted(anotherString);
+		
+		assertEquals(true,aTest);
+		assertEquals(false,anotherStringTest);
+	}
+	
+	@Test
+	public void isARestrictedDay() {
+		
+		Integer sunday = Calendar.SUNDAY;
+		Integer monday = Calendar.MONDAY;
+		Integer tuesday = Calendar.TUESDAY;
+		CreateParkingState create = new CreateParkingState();
+		
+		boolean case1 = create.isARestrictedDay(sunday);
+		boolean case2 = create.isARestrictedDay(monday);
+		boolean case3 = create.isARestrictedDay(tuesday);
+		
+		assertEquals(false,case1);
+		assertEquals(false,case2);
+		assertEquals(true,case3);
+	}
+	
+	@Test
+	public void isAnAllowedCar() {
+		
+		boolean badgeRestricted = true;
+		boolean dayRestricted = true;
+		CreateParkingState create = new CreateParkingState();
+		
+		boolean case1 = create.isAnAllowedCar(badgeRestricted, dayRestricted);
+		boolean case2 = create.isAnAllowedCar(!badgeRestricted, dayRestricted);
+		boolean case3 = create.isAnAllowedCar(badgeRestricted, !dayRestricted);
+		boolean case4 = create.isAnAllowedCar(!badgeRestricted, !dayRestricted);
+		
+		assertEquals(false,case1);
+		assertEquals(true,case2);
 		assertEquals(true,case3);
 		assertEquals(true,case4);
 	}
