@@ -6,7 +6,7 @@ import com.example.inadn.demo.model.impl.consts.ParkingState;
 
 public class Parking {
 	
-	private Integer position;
+	private static Integer position;
 	
 	private ParkingState state;
 	
@@ -25,7 +25,7 @@ public class Parking {
 	public Parking(Integer position, ParkingState state, Money price, com.example.inadn.demo.model.impl.Vehicle vehicle,
 			Date startDate, Date endDate) {
 		super();
-		this.position = position;
+		Parking.position++;
 		this.state = state;
 		this.price = price;
 		this.vehicle = vehicle;
@@ -33,12 +33,8 @@ public class Parking {
 		this.endDate = endDate;
 	}
 
-	public Integer getPosition() {
+	public static Integer getPosition() {
 		return position;
-	}
-
-	public void setPosition(Integer position) {
-		this.position = position;
 	}
 
 	public ParkingState getState() {
