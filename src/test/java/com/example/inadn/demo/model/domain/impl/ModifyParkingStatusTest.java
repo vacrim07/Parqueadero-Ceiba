@@ -19,18 +19,14 @@ public class ModifyParkingStatusTest {
 		
 		Parking p = new Parking();
 		
-		Integer numberOne = 1;
-		Integer numberTwo = 0;
+		p.setPosition(1);
 		ModifyParkingStatus modify = new ModifyParkingStatus(p);
 		
+		int case1 = modify.vehicleCheckOut(p.getPosition());
+		int case2 = modify.vehicleCheckOut(p.getPosition()-1);
 		
-//		modify.getParking().setPosition(numberOne);
-//		int case1 = modify.vehicleCheckOut(p.getPosition());
-//		modify.getParking().setPosition(numberTwo);
-//		int case2 = modify.vehicleCheckOut(p.getPosition());
-//		
-//		assertEquals(0,case1);
-//		assertEquals(0,case2);
+		assertEquals(0,case1);
+		assertEquals(0,case2);
 	}
 
 }
