@@ -8,20 +8,20 @@ public class ModifyParkingStatus implements ITraffic{
 	
 	private Parking parking;	
 	
-	public ModifyParkingStatus(Parking parking) {
+	public ModifyParkingStatus(Parking p) {
 		super();
-		this.parking = parking;
+		this.parking = p;
 		
-		vehicleCheckOut(this.parking.getPosition());
-		parking.setState(ParkingState.CHECKED_OUT);
+		p.setPosition(vehicleCheckOut(this.parking.getPosition()));
+		p.setState(ParkingState.CHECKED_OUT);
 	}
 
 	public Parking getParking() {
 		return parking;
 	}
 
-	public void setParking(Parking parking) {
-		this.parking = parking;
+	public void setParking(Parking p) {
+		this.parking = p;
 	}
 
 	@Override
