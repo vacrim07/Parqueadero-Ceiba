@@ -1,4 +1,4 @@
-package com.example.inadn.demo.controller.buissinesRules.impl;
+package com.example.inadn.demo.controller.domain.impl;
 
 public class Traffic {
 	

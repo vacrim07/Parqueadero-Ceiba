@@ -1,6 +1,6 @@
-package com.example.inadn.demo.controller.buissinesRules.impl;
+package com.example.inadn.demo.controller.domain.impl;
 
-import com.example.inadn.demo.controller.buissinesRules.impl.consts.MaximumVehiclesPerType;
+import com.example.inadn.demo.controller.domain.impl.consts.MaximumVehiclesPerType;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 public class MaximumVehicles {

@@ -1,4 +1,4 @@
-package com.example.inadn.demo.controller.buissinesRules.impl;
+package com.example.inadn.demo.controller.domain.impl;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.inadn.demo.DemoApplication;
-import com.example.inadn.demo.controller.buissinesRules.impl.consts.BadgeRestriction;
+import com.example.inadn.demo.controller.domain.impl.AllowedVehicles;
+import com.example.inadn.demo.controller.domain.impl.consts.BadgeRestriction;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 @RunWith(SpringRunner.class)

@@ -1,8 +1,8 @@
-package com.example.inadn.demo.controller.buissinesRules.impl;
+package com.example.inadn.demo.controller.domain.impl;
 
 import java.util.Calendar;
 
-import com.example.inadn.demo.controller.buissinesRules.impl.consts.BadgeRestriction;
+import com.example.inadn.demo.controller.domain.impl.consts.BadgeRestriction;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 public class AllowedVehicles {

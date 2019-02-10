@@ -1,4 +1,4 @@
-package com.example.inadn.demo.controller.buissinesRules.impl.consts;
+package com.example.inadn.demo.controller.domain.impl.consts;
 
 public enum BadgeRestriction {
 	
