@@ -1,6 +1,6 @@
 package com.example.inadn.demo.model.impl;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 import com.example.inadn.demo.model.impl.consts.ParkingState;
 
@@ -14,16 +14,16 @@ public class Parking {
 	
 	private Vehicle vehicle;
 	
-	private Date startDate;
+	private GregorianCalendar startDate;
 	
-	private Date endDate;
+	private GregorianCalendar endDate;
 
 	public Parking() {
 		super();
 	}
 
-	public Parking(Integer position, ParkingState state, Money price, com.example.inadn.demo.model.impl.Vehicle vehicle,
-			Date startDate, Date endDate) {
+	public Parking(Integer position, ParkingState state, Money price, Vehicle vehicle,
+			GregorianCalendar startDate, GregorianCalendar endDate) {
 		super();
 		Parking.position++;
 		this.state = state;
@@ -61,19 +61,19 @@ public class Parking {
 		this.vehicle = vehicle;
 	}
 
-	public Date getStartDate() {
+	public GregorianCalendar getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(GregorianCalendar startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public GregorianCalendar getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(GregorianCalendar endDate) {
 		this.endDate = endDate;
 	}
 	
