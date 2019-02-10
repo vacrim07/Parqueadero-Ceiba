@@ -1,4 +1,4 @@
-package com.example.inadn.demo.controller.domain;
+package com.example.inadn.demo.model.domain;
 
 import java.math.BigDecimal;
 import java.util.GregorianCalendar;

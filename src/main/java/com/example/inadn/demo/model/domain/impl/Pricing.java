@@ -1,13 +1,13 @@
-package com.example.inadn.demo.controller.domain.impl;
+package com.example.inadn.demo.model.domain.impl;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import com.example.inadn.demo.controller.domain.IPricing;
-import com.example.inadn.demo.controller.domain.impl.consts.DayHoursParking;
-import com.example.inadn.demo.controller.domain.impl.consts.MotorcycleEngineCapacity;
-import com.example.inadn.demo.controller.domain.impl.consts.PricingValues;
+import com.example.inadn.demo.model.domain.IPricing;
+import com.example.inadn.demo.model.domain.impl.consts.DayHoursParking;
+import com.example.inadn.demo.model.domain.impl.consts.MotorcycleEngineCapacity;
+import com.example.inadn.demo.model.domain.impl.consts.PricingValues;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 public class Pricing implements IPricing{

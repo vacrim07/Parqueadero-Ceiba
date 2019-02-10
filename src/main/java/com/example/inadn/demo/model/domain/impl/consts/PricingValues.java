@@ -1,4 +1,4 @@
-package com.example.inadn.demo.controller.domain.impl.consts;
+package com.example.inadn.demo.model.domain.impl.consts;
 
 public enum PricingValues {
 	

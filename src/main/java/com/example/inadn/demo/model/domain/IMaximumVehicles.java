@@ -1,4 +1,4 @@
-package com.example.inadn.demo.controller.domain;
+package com.example.inadn.demo.model.domain;
 
 public interface IMaximumVehicles {
 	

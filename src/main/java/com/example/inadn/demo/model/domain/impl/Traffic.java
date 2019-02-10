@@ -1,6 +1,6 @@
-package com.example.inadn.demo.controller.domain.impl;
+package com.example.inadn.demo.model.domain.impl;
 
-import com.example.inadn.demo.controller.domain.ITraffic;
+import com.example.inadn.demo.model.domain.ITraffic;
 
 public class Traffic implements ITraffic{
 	

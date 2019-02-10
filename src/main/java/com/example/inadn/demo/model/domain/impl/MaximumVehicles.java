@@ -1,7 +1,7 @@
-package com.example.inadn.demo.controller.domain.impl;
+package com.example.inadn.demo.model.domain.impl;
 
-import com.example.inadn.demo.controller.domain.IMaximumVehicles;
-import com.example.inadn.demo.controller.domain.impl.consts.MaximumVehiclesPerType;
+import com.example.inadn.demo.model.domain.IMaximumVehicles;
+import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerType;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 public class MaximumVehicles implements IMaximumVehicles{
