@@ -2,8 +2,8 @@ package com.example.inadn.demo.controller.buissinesRules.impl;
 
 public class Traffic {
 	
-	public Integer vehicleOut(Integer position) {
-		return position--;
+	public Integer vehicleCheckOut(Integer position) {
+		return position > 0 ? position - 1 : 0;
 	}
 
 }
