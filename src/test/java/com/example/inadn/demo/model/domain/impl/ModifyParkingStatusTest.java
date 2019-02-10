@@ -1,6 +1,7 @@
 package com.example.inadn.demo.model.domain.impl;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class ModifyParkingStatusTest {
 		int case2 = modify.vehicleCheckOut(p.getPosition()-1);
 		
 		assertEquals(0,case1);
-		assertEquals(30,case2);
+		assertNull(case2);
 	}
 	
 	@Test
