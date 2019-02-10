@@ -18,17 +18,18 @@ import com.example.inadn.demo.model.impl.consts.ParkingState;
 public class ModifyParkingStatusTest {
 	
 	Parking p;
+	ModifyParkingStatus modify;
 	
 	@Before
 	public void setUp() {
 		p = new Parking();
+		modify = new ModifyParkingStatus();
 	}
 	
 	@Test
 	public void vehicleCheckOut() {
 		
 		Integer position = 1;
-		ModifyParkingStatus modify = new ModifyParkingStatus();
 		
 		Integer case1 = modify.vehicleCheckOut(position);
 		Integer case2 = modify.vehicleCheckOut(position - 1);
