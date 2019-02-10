@@ -21,6 +21,14 @@ public class AllowedVehicles {
 	}
 	
 	public boolean isARestrictedDay(Integer day) {
-		return day == Calendar.SUNDAY || day == Calendar.MONDAY ? true : false;
+		return day == Calendar.SUNDAY || day == Calendar.MONDAY ? false : true;
+	}
+	
+	public boolean isAnAllowedCar(boolean badgeRestricted, boolean dayRestricted) {
+		if(badgeRestricted) {
+			return dayRestricted ? false : true;
+		}else {
+			return true;
+		}
 	}
 }

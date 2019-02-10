@@ -10,8 +10,8 @@ public class MaximumVehicles {
 				MaximumVehiclesPerType.CAR.getMaximum() : MaximumVehiclesPerType.MOTORCYCLE.getMaximum();
 	}
 	
-	public boolean isParkingAvailable(Integer id, Integer total) {
-		return id <= total ? true : false;
+	public boolean isParkingAvailable(Integer position, Integer total) {
+		return position <= total ? true : false;
 	}
 
 }

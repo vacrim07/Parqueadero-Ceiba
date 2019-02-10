@@ -32,14 +32,14 @@ public class MaximumVehiclesTest {
 	@Test
 	public void isParkingAvailable() {
 		
-		Integer idCar = 21;
-		Integer idMotorcycle = 11;
+		Integer positionCar = 21;
+		Integer positionMotorcycle = 11;
 		
 		MaximumVehicles maximumVehicles = new MaximumVehicles();
-		boolean carsFull = maximumVehicles.isParkingAvailable(idCar, MaximumVehiclesPerType.CAR.getMaximum());
-		boolean motorcyclesFull = maximumVehicles.isParkingAvailable(idMotorcycle, MaximumVehiclesPerType.MOTORCYCLE.getMaximum());
-		boolean carsNotFull = maximumVehicles.isParkingAvailable(idCar-1, MaximumVehiclesPerType.CAR.getMaximum());
-		boolean motorcyclesNotFull = maximumVehicles.isParkingAvailable(idMotorcycle-1, MaximumVehiclesPerType.MOTORCYCLE.getMaximum());
+		boolean carsFull = maximumVehicles.isParkingAvailable(positionCar, MaximumVehiclesPerType.CAR.getMaximum());
+		boolean motorcyclesFull = maximumVehicles.isParkingAvailable(positionMotorcycle, MaximumVehiclesPerType.MOTORCYCLE.getMaximum());
+		boolean carsNotFull = maximumVehicles.isParkingAvailable(positionCar-1, MaximumVehiclesPerType.CAR.getMaximum());
+		boolean motorcyclesNotFull = maximumVehicles.isParkingAvailable(positionMotorcycle-1, MaximumVehiclesPerType.MOTORCYCLE.getMaximum());
 		
 		assertEquals(false,carsFull);
 		assertEquals(false,motorcyclesFull);

@@ -60,8 +60,28 @@ public class AllowedVehiclesTest {
 		boolean mondayTest = testAllowedVehicles.isARestrictedDay(monday);
 		boolean tuesdayTest = testAllowedVehicles.isARestrictedDay(tuesday);
 		
-		assertEquals(true,sundayTest);
-		assertEquals(true,mondayTest);
-		assertEquals(false,tuesdayTest);
+		assertEquals(false,sundayTest);
+		assertEquals(false,mondayTest);
+		assertEquals(true,tuesdayTest);
 	}
+	
+	@Test
+	public void isAnAllowedCar() {
+		
+		boolean badgeRestricted = true;
+		boolean dayRestricted = true;
+		
+		AllowedVehicles testAllowedVehicles = new AllowedVehicles();
+		boolean caseOne = testAllowedVehicles.isAnAllowedCar(badgeRestricted, dayRestricted);
+		boolean caseTwo = testAllowedVehicles.isAnAllowedCar(!badgeRestricted, dayRestricted);
+		boolean caseThree = testAllowedVehicles.isAnAllowedCar(badgeRestricted, !dayRestricted);
+		boolean caseFour = testAllowedVehicles.isAnAllowedCar(!badgeRestricted, !dayRestricted);
+		
+		assertEquals(false,caseOne);
+		assertEquals(true,caseTwo);
+		assertEquals(true,caseThree);
+		assertEquals(true,caseFour);
+	}
+	
+	
 }
