@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.inadn.demo.DemoApplication;
-import com.example.inadn.demo.model.domain.impl.consts.BadgeRestriction;
 import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerType;
 import com.example.inadn.demo.model.impl.Parking;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
@@ -80,15 +79,15 @@ public class CreateParkingStateTest {
 	@Test
 	public void isBadgeRestricted() {
 		
-		String a = BadgeRestriction.A.getRestriction();
-		String anotherString = "F";
+		String badge1 = "AFG-754";
+		String badge2 = "FTM-921";
 		CreateParkingState create = new CreateParkingState();
 		
-		boolean aTest = create.isBadgeRestricted(a);
-		boolean anotherStringTest = create.isBadgeRestricted(anotherString);
+		boolean case1 = create.isBadgeRestricted(badge1);
+		boolean case2 = create.isBadgeRestricted(badge2);
 		
-		assertEquals(true,aTest);
-		assertEquals(false,anotherStringTest);
+		assertEquals(true,case1);
+		assertEquals(false,case2);
 	}
 	
 	@Test
