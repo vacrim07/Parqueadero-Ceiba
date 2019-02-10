@@ -42,7 +42,7 @@ public class Pricing {
 //			result = bonus ? result = result + PricingValues.EXTRA_MOTORCYCLE.getAmount() : result;
 //		}
 		
-		result = hours;
+		result = hoursAdded;
 		
 		return new BigDecimal(result);
 	}
