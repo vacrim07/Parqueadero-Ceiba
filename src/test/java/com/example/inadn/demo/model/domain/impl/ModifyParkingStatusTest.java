@@ -35,7 +35,7 @@ public class ModifyParkingStatusTest {
 		int case2 = modify.vehicleCheckOut(p.getPosition()-1);
 		
 		assertEquals(0,case1);
-		assertEquals(0,case2);
+		assertEquals(-1,case2);
 	}
 	
 	@Test
