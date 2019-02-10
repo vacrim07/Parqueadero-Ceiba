@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.inadn.demo.DemoApplication;
+import com.example.inadn.demo.controller.buissinesRules.impl.consts.BadgeRestriction;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 @RunWith(SpringRunner.class)
@@ -29,6 +30,20 @@ public class AllowedVehiclesTest {
 		assertEquals(true,carTest);
 		assertEquals(true,motorcycleTest);
 		assertEquals(false,bikeTest);
+	}
+	
+	@Test
+	public void isBadgeRestricted() {
+		
+		String a = BadgeRestriction.A.getRestriction();
+		String anotherString = "F";
+		
+		AllowedVehicles testAllowedVehicles = new AllowedVehicles();
+		boolean aTest = testAllowedVehicles.isBadgeRestricted(a);
+		boolean anotherStringTest = testAllowedVehicles.isBadgeRestricted(anotherString);
+		
+		assertEquals(true,aTest);
+		assertEquals(false,anotherStringTest);
 	}
 
 }

@@ -1,5 +1,9 @@
 package com.example.inadn.demo.controller.buissinesRules.impl;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import com.example.inadn.demo.controller.buissinesRules.impl.consts.BadgeRestriction;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 public class AllowedVehicles {
@@ -11,5 +15,9 @@ public class AllowedVehicles {
 		}else {
 			return false;
 		}
+	}
+	
+	public boolean isBadgeRestricted(String badge) {
+		return badge.substring(0,1).equalsIgnoreCase(BadgeRestriction.A.getRestriction()) ? true : false;
 	}
 }
