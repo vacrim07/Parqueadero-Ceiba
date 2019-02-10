@@ -5,8 +5,12 @@ import com.example.inadn.demo.model.impl.Parking;
 import com.example.inadn.demo.model.impl.consts.ParkingState;
 
 public class ModifyParkingStatus implements ITraffic{
-	
+
 	private Parking parking;	
+	
+	public ModifyParkingStatus() {
+		super();
+	}
 	
 	public ModifyParkingStatus(Parking p) {
 		super();

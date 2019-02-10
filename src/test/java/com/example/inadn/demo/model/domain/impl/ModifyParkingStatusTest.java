@@ -30,9 +30,9 @@ public class ModifyParkingStatusTest {
 		Integer position = 1;
 		p.setPosition(position);
 		
-		ModifyParkingStatus modify = new ModifyParkingStatus(p);
+		ModifyParkingStatus modify = new ModifyParkingStatus();
 		
-		int case1 = modify.vehicleCheckOut(position);
+		int case1 = modify.vehicleCheckOut(p.getPosition());
 		Integer case2 = modify.vehicleCheckOut(p.getPosition()-1);
 		
 		assertEquals(0,case1);
