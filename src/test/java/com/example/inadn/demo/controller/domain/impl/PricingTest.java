@@ -7,15 +7,20 @@ import java.util.GregorianCalendar;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.inadn.demo.DemoApplication;
+import com.example.inadn.demo.controller.domain.IPricing;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest (classes = DemoApplication.class)
 public class PricingTest {
+	
+	@Autowired 
+	IPricing pricing;
 	
 	@Test
 	public void isBonusMotorcycleRequired() {
@@ -23,7 +28,7 @@ public class PricingTest {
 		Integer engineCapacityOne = 500;
 		Integer engineCapacityTwo = 501;
 		
-		Pricing pricing= new Pricing();
+		//Pricing pricing= new Pricing();
 		boolean case1 = pricing.isBonusMotorcycleRequired(engineCapacityOne);
 		boolean case2 = pricing.isBonusMotorcycleRequired(engineCapacityTwo);
 		
