@@ -18,11 +18,11 @@ public class TrafficTest {
 	public void vehicleOut() {
 		
 		Traffic traffic = new Traffic();
-		int caseOne = traffic.vehicleOut(10);
+		int caseOne = traffic.vehicleOut(1);
 		int caseTwo = traffic.vehicleOut(0);
 		
-		assertEquals(9,caseOne);
-		assertEquals(0,caseTwo);
+		assertEquals(0,caseOne);
+		assertEquals(-1,caseTwo);
 	}
 
 }
