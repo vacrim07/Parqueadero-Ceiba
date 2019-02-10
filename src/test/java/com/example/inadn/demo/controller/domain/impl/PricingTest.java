@@ -56,26 +56,19 @@ public class PricingTest {
 		
 		Pricing pricing= new Pricing();
 		BigDecimal case1 = pricing.parkingPricing(timeOne, car, !bonus);
-		//BigDecimal case2 = pricing.parkingPricing(timeOne, motorcycle, bonus);
+		BigDecimal case2 = pricing.parkingPricing(timeOne, motorcycle, bonus);
 		BigDecimal case3 = pricing.parkingPricing(timeTwo, car, !bonus);
-		//BigDecimal case4 = pricing.parkingPricing(timeTwo, motorcycle, !bonus);
+		BigDecimal case4 = pricing.parkingPricing(timeTwo, motorcycle, !bonus);
 		BigDecimal case5 = pricing.parkingPricing(timeThree, car, !bonus);
-		//BigDecimal case6 = pricing.parkingPricing(timeThree, motorcycle, bonus);
+		BigDecimal case6 = pricing.parkingPricing(timeThree, motorcycle, bonus);
 		
 		
-//		assertEquals(new BigDecimal(8000),case1);
-//		assertEquals(new BigDecimal(6000),case2);
-//		assertEquals(new BigDecimal(18000),case3);
-//		assertEquals(new BigDecimal(9000),case4);
-//		assertEquals(new BigDecimal(1000),case5);
-//		assertEquals(new BigDecimal(2500),case6);
-		
-		//assertEquals(new BigDecimal(8000),case1);
-		//assertEquals(new BigDecimal(6000),case2);
+		assertEquals(new BigDecimal(8000),case1);
+		assertEquals(new BigDecimal(6000),case2);
 		assertEquals(new BigDecimal(18000),case3);
-		//assertEquals(new BigDecimal(9000),case4);
+		assertEquals(new BigDecimal(9000),case4);
 		assertEquals(new BigDecimal(1000),case5);
-		//assertEquals(new BigDecimal(2500),case6);
+		assertEquals(new BigDecimal(2500),case6);
 		
 	}
 	

@@ -35,15 +35,12 @@ public class Pricing {
 			days++;
 		}
 		
-		result = 0;
-		
 		if(vehicleType.equalsIgnoreCase(VehicleType.CAR.getType())) {
-			result = days*PricingValues.DAY_CAR.getAmount() + hours*PricingValues.HOUR_CAR.getAmount();
+			result = days*PricingValues.DAY_CAR.getAmount() + hoursAdded*PricingValues.HOUR_CAR.getAmount();
+		}else {
+			result = days*PricingValues.DAY_MOTORCYCLE.getAmount() + hoursAdded*PricingValues.HOUR_MOTORCYCLE.getAmount();
+			result = bonus ? result = result + PricingValues.EXTRA_MOTORCYCLE.getAmount() : result;
 		}
-//		}else {
-//			result = days*PricingValues.DAY_MOTORCYCLE.getAmount() + hours*PricingValues.HOUR_MOTORCYCLE.getAmount();
-//			result = bonus ? result = result + PricingValues.EXTRA_MOTORCYCLE.getAmount() : result;
-//		}
 		
 		return new BigDecimal(result);
 	}
