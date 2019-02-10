@@ -35,7 +35,7 @@ public class ModifyParkingStatusTest {
 		int case2 = modify.vehicleCheckOut(p.getPosition()-1);
 		
 		assertEquals(0,case1);
-		assertEquals(-1,case2);
+		assertEquals(0,case2);
 	}
 	
 	@Test
@@ -45,7 +45,7 @@ public class ModifyParkingStatusTest {
 		
 		ModifyParkingStatus response = new ModifyParkingStatus(p);
 		
-		assertEquals(ParkingState.CHECKED_OUT.getState(),response.getParking().getState());
+		assertEquals(ParkingState.CHECKED_OUT.getState(),response.getParking().getState().getState());
 		assertEquals(9,response.getParking().getPosition().intValue());
 	}
 

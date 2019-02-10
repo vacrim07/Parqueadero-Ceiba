@@ -26,7 +26,7 @@ public class ModifyParkingStatus implements ITraffic{
 
 	@Override
 	public Integer vehicleCheckOut(Integer position) {
-		return position > 0 ? position - 1 : -1;
+		return position > 0 ? position - 1 : 0;
 	}
 
 }
