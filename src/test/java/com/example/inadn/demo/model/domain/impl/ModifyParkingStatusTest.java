@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.inadn.demo.DemoApplication;
 import com.example.inadn.demo.model.impl.Parking;
+import com.example.inadn.demo.model.impl.consts.ParkingState;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest (classes = DemoApplication.class)
@@ -25,16 +26,27 @@ public class ModifyParkingStatusTest {
 	@Test
 	public void vehicleCheckOut() {
 		
-		//Parking p = new Parking();
+		Integer position = 1;
+		p.setPosition(position);
 		
-		p.setPosition(1);
 		ModifyParkingStatus modify = new ModifyParkingStatus(p);
 		
 		int case1 = modify.vehicleCheckOut(p.getPosition());
 		int case2 = modify.vehicleCheckOut(p.getPosition()-1);
 		
 		assertEquals(0,case1);
-		assertEquals(0,case2);
+		assertEquals(-1,case2);
+	}
+	
+	@Test
+	public void modifyParkingStatusResponse() {
+		
+		p.setPosition(10);
+		
+		ModifyParkingStatus response = new ModifyParkingStatus(p);
+		
+		assertEquals(ParkingState.CHECKED_OUT.getState(),response.getParking().getState());
+		assertEquals(9,response.getParking().getPosition().intValue());
 	}
 
 }
