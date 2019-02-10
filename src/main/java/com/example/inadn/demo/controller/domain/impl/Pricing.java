@@ -4,17 +4,20 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import com.example.inadn.demo.controller.domain.IPricing;
 import com.example.inadn.demo.controller.domain.impl.consts.DayHoursParking;
 import com.example.inadn.demo.controller.domain.impl.consts.MotorcycleEngineCapacity;
 import com.example.inadn.demo.controller.domain.impl.consts.PricingValues;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
-public class Pricing {
+public class Pricing implements IPricing{
 	
+	@Override
 	public boolean isBonusMotorcycleRequired(Integer engineCapacity) {
 		return engineCapacity > MotorcycleEngineCapacity.TOP.getValue() ? true : false;
 	}
 	
+	@Override
 	public Integer parkingHours(GregorianCalendar checkIn, GregorianCalendar checkOut) {
 		
 		Integer years = checkOut.get(Calendar.YEAR) - checkIn.get(Calendar.YEAR);
@@ -24,6 +27,7 @@ public class Pricing {
 		return years*8760 + days*24 + hours;
 	}
 	
+	@Override
 	public BigDecimal parkingPricing(Integer hours, String vehicleType, boolean bonus) {
 		
 		Integer days = hours / 24;

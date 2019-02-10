@@ -1,7 +1,10 @@
 package com.example.inadn.demo.controller.domain.impl;
 
-public class Traffic {
+import com.example.inadn.demo.controller.domain.ITraffic;
+
+public class Traffic implements ITraffic{
 	
+	@Override
 	public Integer vehicleCheckOut(Integer position) {
 		return position > 0 ? position - 1 : 0;
 	}
