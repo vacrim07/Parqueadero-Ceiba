@@ -21,6 +21,9 @@ public class TrafficTest {
 		int caseOne = traffic.vehicleOut(1);
 		int caseTwo = traffic.vehicleOut(0);
 		
+		System.out.println("resultOne:" + caseOne);
+		System.out.println("resultTwo:" + caseTwo);
+		
 		assertEquals(0,caseOne);
 		assertEquals(-1,caseTwo);
 	}
