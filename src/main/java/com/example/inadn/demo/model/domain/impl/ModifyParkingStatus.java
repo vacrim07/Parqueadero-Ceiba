@@ -12,8 +12,8 @@ public class ModifyParkingStatus implements ITraffic{
 		super();
 		this.parking = p;
 		
-		p.setPosition(vehicleCheckOut(this.parking.getPosition()));
-		p.setState(ParkingState.CHECKED_OUT);
+//		p.setPosition(vehicleCheckOut(this.parking.getPosition()));
+//		p.setState(ParkingState.CHECKED_OUT);
 	}
 
 	public Parking getParking() {
