@@ -2,6 +2,8 @@ package com.example.inadn.demo.controller.buissinesRules.impl;
 
 import static org.junit.Assert.*;
 
+import java.util.Calendar;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -45,5 +47,21 @@ public class AllowedVehiclesTest {
 		assertEquals(true,aTest);
 		assertEquals(false,anotherStringTest);
 	}
-
+	
+	@Test
+	public void isARestrictedDay() {
+		
+		Integer sunday = Calendar.SUNDAY;
+		Integer monday = Calendar.MONDAY;
+		Integer tuesday = Calendar.TUESDAY;
+		
+		AllowedVehicles testAllowedVehicles = new AllowedVehicles();
+		boolean sundayTest = testAllowedVehicles.isARestrictedDay(sunday);
+		boolean mondayTest = testAllowedVehicles.isARestrictedDay(monday);
+		boolean tuesdayTest = testAllowedVehicles.isARestrictedDay(tuesday);
+		
+		assertEquals(true,sundayTest);
+		assertEquals(true,mondayTest);
+		assertEquals(false,tuesdayTest);
+	}
 }
