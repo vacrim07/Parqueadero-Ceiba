@@ -3,12 +3,10 @@ package com.example.inadn.demo.controller.domain.impl;
 import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -19,16 +17,13 @@ import com.example.inadn.demo.model.impl.consts.VehicleType;
 @SpringBootTest (classes = DemoApplication.class)
 public class PricingTest {
 	
-	@Autowired
-	Pricing pricing;
-	
 	@Test
 	public void isBonusMotorcycleRequired() {
 		
 		Integer engineCapacityOne = 500;
 		Integer engineCapacityTwo = 501;
 		
-		//Pricing pricing= new Pricing();
+		Pricing pricing= new Pricing();
 		boolean case1 = pricing.isBonusMotorcycleRequired(engineCapacityOne);
 		boolean case2 = pricing.isBonusMotorcycleRequired(engineCapacityTwo);
 		
@@ -42,7 +37,7 @@ public class PricingTest {
 		GregorianCalendar checkInOne = new GregorianCalendar(2018,11,31,20,0,0);
 		GregorianCalendar checkOutOne = new GregorianCalendar(2019,0,2,20,59,59);
 		
-		//Pricing pricing= new Pricing();
+		Pricing pricing= new Pricing();
 		int case1 = pricing.parkingHours(checkInOne, checkOutOne);
 		
 		assertEquals(48,case1);
@@ -58,7 +53,7 @@ public class PricingTest {
 		Integer timeTwo = 50;
 		Integer timeThree = 1;
 		
-		//Pricing pricing= new Pricing();
+		Pricing pricing= new Pricing();
 		BigDecimal case1 = pricing.parkingPricing(timeOne, car, !bonus);
 		BigDecimal case2 = pricing.parkingPricing(timeOne, motorcycle, bonus);
 		BigDecimal case3 = pricing.parkingPricing(timeTwo, car, !bonus);
