@@ -17,6 +17,6 @@ public class Pricing {
 		Integer days = checkOut.get(Calendar.DAY_OF_YEAR) - checkIn.get(Calendar.DAY_OF_YEAR);
 		Integer hours = checkOut.get(Calendar.HOUR_OF_DAY) - checkIn.get(Calendar.HOUR_OF_DAY);
 		
-		return years + days*24 + hours;
+		return years*8760 + days*24 + hours;
 	}
 }
