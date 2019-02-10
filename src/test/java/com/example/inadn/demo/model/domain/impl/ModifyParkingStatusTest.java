@@ -32,10 +32,10 @@ public class ModifyParkingStatusTest {
 		
 		ModifyParkingStatus modify = new ModifyParkingStatus(p);
 		
-		int case1 = modify.vehicleCheckOut(p.getPosition());
-		int case2 = modify.vehicleCheckOut(p.getPosition()-1);
+		Integer case1 = modify.vehicleCheckOut(p.getPosition());
+		Integer case2 = modify.vehicleCheckOut(p.getPosition()-1);
 		
-		assertEquals(0,case1);
+		assertEquals(new Integer(0),case1);
 		assertNull(case2);
 	}
 	
