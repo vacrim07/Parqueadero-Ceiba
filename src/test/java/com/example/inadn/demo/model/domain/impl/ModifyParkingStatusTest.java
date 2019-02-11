@@ -13,7 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.inadn.demo.DemoApplication;
+import com.example.inadn.demo.model.impl.Motorcycle;
 import com.example.inadn.demo.model.impl.Parking;
+import com.example.inadn.demo.model.impl.Vehicle;
 import com.example.inadn.demo.model.impl.consts.ParkingState;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
@@ -21,12 +23,12 @@ import com.example.inadn.demo.model.impl.consts.VehicleType;
 @SpringBootTest (classes = DemoApplication.class)
 public class ModifyParkingStatusTest {
 	
-	Parking p;
+	Parking p1;
 	ModifyParkingStatus modify;
 	
 	@Before
 	public void setUp() {
-		p = new Parking();
+		p1 = new Parking();
 		modify = new ModifyParkingStatus();
 	}
 	
@@ -96,12 +98,29 @@ public class ModifyParkingStatusTest {
 	@Test
 	public void modifyParkingStatusResponse() {
 		
-		p.setPosition(10);
+		Parking p2 = p1;
 		
-		ModifyParkingStatus response = new ModifyParkingStatus(p);
+		// Response 1 : CAR
+		Integer position1 = 10;
+		Integer engineCapacity1 = 0;
+		GregorianCalendar checkIn1 = new GregorianCalendar(2018,11,31,20,0,0);
+		GregorianCalendar checkOut2 = new GregorianCalendar(2019,0,2,20,59,59);
+		Motorcycle vehicle1 = new Motorcycle();
+		vehicle1.setEngineCapacity(engineCapacity1);
+		vehicle1.setType(VehicleType.CAR);
+		p1.setVehicle(vehicle1);
+		p1.setPosition(position1);
+		p1.setStartDate(checkIn1);
+		p1.setEndDate(checkOut2);
 		
-		assertEquals(ParkingState.CHECKED_OUT.getState(),response.getParking().getState().getState());
-		assertEquals(9,response.getParking().getPosition().intValue());
+		
+		ModifyParkingStatus response1 = new ModifyParkingStatus(p1);
+		
+		assertEquals(new Integer(48),response1.parkingHours(checkIn1, checkOut2));
+		assertEquals(false,response1.isBonusMotorcycleRequired(engineCapacity1));
+		assertEquals(new BigDecimal(16000), response1.getParking().getPrice().getAmount());
+		assertEquals(ParkingState.CHECKED_OUT.getState(),response1.getParking().getState().getState());
+		assertEquals(9,response1.getParking().getPosition().intValue());
 	}
 
 }

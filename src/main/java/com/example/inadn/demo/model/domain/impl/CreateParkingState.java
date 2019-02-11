@@ -1,17 +1,12 @@
 package com.example.inadn.demo.model.domain.impl;
 
-import java.math.BigDecimal;
+
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import com.example.inadn.demo.model.domain.IAllowedVehicles;
 import com.example.inadn.demo.model.domain.IMaximumVehicles;
-import com.example.inadn.demo.model.domain.IPricing;
 import com.example.inadn.demo.model.domain.impl.consts.BadgeRestriction;
-import com.example.inadn.demo.model.domain.impl.consts.DayHoursParking;
 import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerType;
-import com.example.inadn.demo.model.domain.impl.consts.MotorcycleEngineCapacity;
-import com.example.inadn.demo.model.domain.impl.consts.PricingValues;
 import com.example.inadn.demo.model.impl.Parking;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
