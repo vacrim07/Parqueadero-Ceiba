@@ -23,12 +23,10 @@ import com.example.inadn.demo.model.impl.consts.VehicleType;
 @SpringBootTest (classes = DemoApplication.class)
 public class ModifyParkingStatusTest {
 	
-	Parking p1;
 	ModifyParkingStatus modify;
 	
 	@Before
 	public void setUp() {
-		p1 = new Parking();
 		modify = new ModifyParkingStatus();
 	}
 	
@@ -132,11 +130,11 @@ public class ModifyParkingStatusTest {
 		ModifyParkingStatus response2 = new ModifyParkingStatus(p2);
 		
 		// Response 1
-//		assertEquals(new Integer(48), response1.parkingHours(checkIn1, checkOut1));
-//		assertEquals(false, response1.isBonusMotorcycleRequired(engineCapacity1));
-//		assertEquals(new BigDecimal(16000), response1.getParking().getPrice().getAmount());
-//		assertEquals(ParkingState.CHECKED_OUT.getState(), response1.getParking().getState().getState());
-//		assertEquals(9, response1.getParking().getPosition().intValue());
+		assertEquals(new Integer(48), response1.parkingHours(checkIn1, checkOut1));
+		assertEquals(false, response1.isBonusMotorcycleRequired(engineCapacity1));
+		assertEquals(new BigDecimal(16000), response1.getParking().getPrice().getAmount());
+		assertEquals(ParkingState.CHECKED_OUT.getState(), response1.getParking().getState().getState());
+		assertEquals(9, response1.getParking().getPosition().intValue());
 		// Response 2
 		assertEquals(new Integer(0), response2.parkingHours(checkIn2, checkOut2));
 		assertEquals(true, response2.isBonusMotorcycleRequired(engineCapacity2));
