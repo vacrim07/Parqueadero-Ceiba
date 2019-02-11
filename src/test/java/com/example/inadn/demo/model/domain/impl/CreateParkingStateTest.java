@@ -133,6 +133,7 @@ public class CreateParkingStateTest {
 		Parking p1 = new Parking();
 		Parking p2 = new Parking();
 		Parking p3 = new Parking();
+		Parking p4 = new Parking();
 		
 		// Response 1 : Parking is full
 		Integer position1 = 21;
@@ -165,11 +166,23 @@ public class CreateParkingStateTest {
 		GregorianCalendar checkIn3 = new GregorianCalendar(2019,1,14,22,0,0);
 		p3.setStartDate(checkIn3);
 		p3.setVehicle(vehicle3);
-		p3.setPosition(position3);	
+		p3.setPosition(position3);
+		
+		// Response 4 : MOTORCYCLE Parking is full
+		Integer position4 = 15;
+		Vehicle vehicle4 = new Vehicle();
+		vehicle4.setType(VehicleType.MOTORCYCLE);	
+		String badge4 = "IGH-761";
+		vehicle4.setBadge(badge4);
+		GregorianCalendar checkIn4 = new GregorianCalendar(2019,1,10,22,0,0);
+		p4.setStartDate(checkIn4);
+		p4.setVehicle(vehicle4);
+		p4.setPosition(position4);
 		
 		CreateParkingState response1 = new CreateParkingState(p1);
 		CreateParkingState response2 = new CreateParkingState(p2);
 		CreateParkingState response3 = new CreateParkingState(p3);
+		CreateParkingState response4 = new CreateParkingState(p4);
 		
 		// Response 1
 		assertEquals(new Integer(20), response1.getMaximumVehicles(VehicleType.CAR.getType()));
@@ -192,5 +205,12 @@ public class CreateParkingStateTest {
 		assertEquals(true, response3.isBadgeRestricted(response3.getParking().getVehicle().getBadge()));
 		assertEquals(true, response3.isARestrictedDay(response3.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingState.NOT_ALLOWED.getState(), response3.getParking().getState().getState());
+		// Response 4
+		assertEquals(new Integer(10), response4.getMaximumVehicles(VehicleType.MOTORCYCLE.getType()));
+		assertEquals(false, response4.isParkingAvailable(position4, response4.getMaximumVehicles(VehicleType.CAR.getType())));
+		assertEquals(false, response4.isVehicleRestricted(response4.getParking().getVehicle().getType().getType()));
+		assertEquals(false, response4.isBadgeRestricted(response4.getParking().getVehicle().getBadge()));
+		assertEquals(false, response4.isARestrictedDay(response4.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
+		assertEquals(ParkingState.NOT_ALLOWED.getState(), response4.getParking().getState().getState());
 	}
 }
