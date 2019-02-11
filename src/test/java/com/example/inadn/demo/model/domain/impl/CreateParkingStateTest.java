@@ -134,6 +134,7 @@ public class CreateParkingStateTest {
 		Parking p2 = new Parking();
 		Parking p3 = new Parking();
 		Parking p4 = new Parking();
+		Parking p5 = new Parking();
 		
 		// Response 1 : Parking is full
 		Integer position1 = 21;
@@ -184,11 +185,11 @@ public class CreateParkingStateTest {
 		Vehicle vehicle5 = new Vehicle();
 		vehicle5.setType(VehicleType.MOTORCYCLE);	
 		String badge5 = "AGH-761";
-		vehicle4.setBadge(badge5);
+		vehicle5.setBadge(badge5);
 		GregorianCalendar checkIn5 = new GregorianCalendar(2019,1,14,22,0,0);
-		p4.setStartDate(checkIn5);
-		p4.setVehicle(vehicle5);
-		p4.setPosition(position5);
+		p5.setStartDate(checkIn5);
+		p5.setVehicle(vehicle5);
+		p5.setPosition(position5);
 		
 		CreateParkingState response1 = new CreateParkingState(p1);
 		CreateParkingState response2 = new CreateParkingState(p2);
