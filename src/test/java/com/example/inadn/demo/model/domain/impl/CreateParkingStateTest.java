@@ -1,9 +1,7 @@
 package com.example.inadn.demo.model.domain.impl;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
-import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -16,7 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.inadn.demo.DemoApplication;
 import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerType;
-import com.example.inadn.demo.model.impl.Motorcycle;
 import com.example.inadn.demo.model.impl.Parking;
 import com.example.inadn.demo.model.impl.Vehicle;
 import com.example.inadn.demo.model.impl.consts.ParkingState;
