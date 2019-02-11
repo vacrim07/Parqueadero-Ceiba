@@ -34,7 +34,7 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 		if(isVehicleRestricted(vehicleType)) {
 			boolean badgeRestricted = isBadgeRestricted(badge);
 			boolean restrictedDay = isARestrictedDay(day);
-			state2 = isAnAllowedCar(badgeRestricted, restrictedDay);
+			state2 = !isAnAllowedCar(badgeRestricted, restrictedDay);
 		}else {
 			state2 = false;
 		}
