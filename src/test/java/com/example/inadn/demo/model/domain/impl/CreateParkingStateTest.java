@@ -143,7 +143,7 @@ public class CreateParkingStateTest {
 		vehicle1.setType(VehicleType.CAR);	
 		String badge1 = "EGH-761";
 		vehicle1.setBadge(badge1);
-		GregorianCalendar checkIn1 = new GregorianCalendar(2019,1,14,22,0,0);
+		GregorianCalendar checkIn1 = new GregorianCalendar(2019,1,10,22,0,0);
 		p1.setStartDate(checkIn1);
 		p1.setVehicle(vehicle1);
 		p1.setPosition(position1);
