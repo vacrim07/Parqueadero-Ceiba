@@ -63,7 +63,7 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 
 	@Override
 	public boolean isParkingAvailable(Integer position, Integer total) {
-		return position <= total ? true : false;
+		return position <= total;
 	}
 
 	@Override
@@ -73,18 +73,18 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 
 	@Override
 	public boolean isBadgeRestricted(String badge) {
-		return badge.substring(0,1).equalsIgnoreCase(BadgeRestriction.A.getRestriction()) ? true : false;
+		return badge.substring(0,1).equalsIgnoreCase(BadgeRestriction.A.getRestriction());
 	}
 
 	@Override
 	public boolean isARestrictedDay(Integer day) {
-		return day == Calendar.SUNDAY || day == Calendar.MONDAY ? false : true;
+		return day == Calendar.SUNDAY || day == Calendar.MONDAY;
 	}
 
 	@Override
 	public boolean isAnAllowedCar(boolean badgeRestricted, boolean dayRestricted) {
 		if(badgeRestricted) {
-			return dayRestricted ? false : true;
+			return dayRestricted;
 		}else {
 			return true;
 		}
