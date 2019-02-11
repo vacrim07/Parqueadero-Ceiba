@@ -2,7 +2,7 @@ package com.example.inadn.demo.model.domain;
 
 public interface IAllowedVehicles {
 	
-	boolean isVehicleAllowed(String vehicleType);
+	boolean isVehicleRestricted(String vehicleType);
 	
 	boolean isBadgeRestricted(String badge);
 	

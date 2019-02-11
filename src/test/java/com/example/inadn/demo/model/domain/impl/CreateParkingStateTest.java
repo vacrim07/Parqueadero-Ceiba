@@ -189,6 +189,7 @@ public class CreateParkingStateTest {
 		assertEquals(false, response2.isARestrictedDay(response2.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingState.CHECKED_IN.getState(), response2.getParking().getState().getState());
 		// Response 3
+		assertEquals(new Integer(20), response3.getMaximumVehicles(VehicleType.CAR.getType()));
 		assertEquals(true, response3.isParkingAvailable(position3, response3.getMaximumVehicles(VehicleType.CAR.getType())));
 		assertEquals(true, response3.isVehicleAllowed(response3.getParking().getVehicle().getType().getType()));
 		assertEquals(true, response3.isBadgeRestricted(response3.getParking().getVehicle().getBadge()));

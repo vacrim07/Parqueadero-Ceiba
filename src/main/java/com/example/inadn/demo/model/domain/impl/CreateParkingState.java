@@ -31,7 +31,7 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 		Integer total = getMaximumVehicles(vehicleType);
 		boolean state1 = isParkingAvailable(position, total);
 		
-		if(isVehicleAllowed(vehicleType)) {
+		if(isVehicleRestricted(vehicleType)) {
 			boolean badgeRestricted = isBadgeRestricted(badge);
 			boolean restrictedDay = isARestrictedDay(day);
 			state2 = isAnAllowedCar(badgeRestricted, restrictedDay);
@@ -39,7 +39,7 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 			state2 = false;
 		}
 		
-		p.setState(state1 && state2 ? ParkingState.CHECKED_IN : ParkingState.NOT_ALLOWED);
+		p.setState(state1 && !state2 ? ParkingState.CHECKED_IN : ParkingState.NOT_ALLOWED);
 		
 	}
 	
@@ -67,13 +67,8 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 	}
 
 	@Override
-	public boolean isVehicleAllowed(String vehicleType) {
-		if (vehicleType.equalsIgnoreCase(VehicleType.CAR.getType()) ||
-				vehicleType.equalsIgnoreCase(VehicleType.MOTORCYCLE.getType())) {
-			return true;
-		}else {
-			return false;
-		}
+	public boolean isVehicleRestricted(String vehicleType) {
+		return vehicleType.equalsIgnoreCase(VehicleType.CAR.getType());
 	}
 
 	@Override
