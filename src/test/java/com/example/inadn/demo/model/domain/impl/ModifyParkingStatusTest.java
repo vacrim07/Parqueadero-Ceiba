@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import java.math.BigDecimal;
 import java.util.GregorianCalendar;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,8 +27,13 @@ public class ModifyParkingStatusTest {
 	ModifyParkingStatus modify;
 	
 	@Before
-	public void setUp() {
+	public void start() {
 		modify = new ModifyParkingStatus();
+	}
+	
+	@After
+	public void stop() {
+		modify = null;
 	}
 	
 	@Test
@@ -143,6 +149,7 @@ public class ModifyParkingStatusTest {
 		
 		ModifyParkingStatus response1 = new ModifyParkingStatus(p1);
 		ModifyParkingStatus response2 = new ModifyParkingStatus(p2);
+		ModifyParkingStatus response3 = new ModifyParkingStatus(p3);
 		
 		// Response 1
 		assertEquals(new Integer(48), response1.parkingHours(checkIn1, checkOut1));
@@ -157,11 +164,11 @@ public class ModifyParkingStatusTest {
 		assertEquals(ParkingState.CHECKED_OUT.getState(), response2.getParking().getState().getState());
 		assertEquals(5, response2.getParking().getPosition().intValue());
 		// Response 3
-		assertEquals(new Integer(48), response1.parkingHours(checkIn1, checkOut1));
-		assertEquals(false, response1.isBonusMotorcycleRequired(engineCapacity1));
-		assertEquals(new BigDecimal(8000), response1.getParking().getPrice().getAmount());
-		assertEquals(ParkingState.CHECKED_OUT.getState(), response1.getParking().getState().getState());
-		assertEquals(0, response1.getParking().getPosition().intValue());
+		assertEquals(new Integer(48), response3.parkingHours(checkIn1, checkOut1));
+		assertEquals(false, response3.isBonusMotorcycleRequired(engineCapacity1));
+		assertEquals(new BigDecimal(8000), response3.getParking().getPrice().getAmount());
+		assertEquals(ParkingState.CHECKED_OUT.getState(), response3.getParking().getState().getState());
+		assertEquals(0, response3.getParking().getPosition().intValue());
 	}
 
 }
