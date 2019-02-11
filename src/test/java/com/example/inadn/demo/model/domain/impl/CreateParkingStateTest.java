@@ -192,7 +192,7 @@ public class CreateParkingStateTest {
 		
 		
 		// Response 1 : Parking is full
-		Parking p1 = new ParkingMock().getCreatePCase1();
+		Parking p1 = new ParkingMock().getCase1(true);
 		
 		CreateParkingState response1 = new CreateParkingState(p1);
 		CreateParkingState response2 = new CreateParkingState(p2);

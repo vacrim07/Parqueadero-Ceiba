@@ -29,11 +29,11 @@ public class ParkingMock {
 		this.parkingMock = parkingMock;
 	}
 	
-	public Parking getCreatePCase1() {
+	public Parking getCase1(boolean isCreate) {
 		
 		Integer position = 21;
 		GregorianCalendar checkIn = new GregorianCalendar(2019,1,10,22,0,0);
-		GregorianCalendar checkOut = null;
+		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,10,22,0,0);
 		
 		ParkingState parkingState = ParkingState.CHECKED_IN;
 		
