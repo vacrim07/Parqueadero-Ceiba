@@ -98,6 +98,7 @@ public class ModifyParkingStatusTest {
 		
 		Parking p1 = new Parking();
 		Parking p2 = new Parking();
+		Parking p3 = new Parking();
 		
 		// Response 1 : CAR
 		Integer position1 = 10;
@@ -125,6 +126,20 @@ public class ModifyParkingStatusTest {
 		p2.setStartDate(checkIn2);
 		p2.setEndDate(checkOut2);
 		
+		// Response 3 : MOTORCYCLE < 500 CC
+		Integer position3 = 1;
+		Integer engineCapacity3 = 150;
+		GregorianCalendar checkIn3 = new GregorianCalendar(2018,11,31,20,0,0);
+		GregorianCalendar checkOut3 = new GregorianCalendar(2019,0,2,20,59,59);
+		Motorcycle vehicle3 = new Motorcycle();
+		vehicle3.setEngineCapacity(engineCapacity3);
+		vehicle3.setType(VehicleType.MOTORCYCLE);
+		p3.setVehicle(vehicle3);
+		p3.setPosition(position3);
+		p3.setStartDate(checkIn3);
+		p3.setEndDate(checkOut3);
+		
+		
 		
 		ModifyParkingStatus response1 = new ModifyParkingStatus(p1);
 		ModifyParkingStatus response2 = new ModifyParkingStatus(p2);
@@ -141,6 +156,12 @@ public class ModifyParkingStatusTest {
 		assertEquals(new BigDecimal(2000), response2.getParking().getPrice().getAmount());
 		assertEquals(ParkingState.CHECKED_OUT.getState(), response2.getParking().getState().getState());
 		assertEquals(5, response2.getParking().getPosition().intValue());
+		// Response 3
+		assertEquals(new Integer(48), response1.parkingHours(checkIn1, checkOut1));
+		assertEquals(false, response1.isBonusMotorcycleRequired(engineCapacity1));
+		assertEquals(new BigDecimal(8000), response1.getParking().getPrice().getAmount());
+		assertEquals(ParkingState.CHECKED_OUT.getState(), response1.getParking().getState().getState());
+		assertEquals(0, response1.getParking().getPosition().intValue());
 	}
 
 }
