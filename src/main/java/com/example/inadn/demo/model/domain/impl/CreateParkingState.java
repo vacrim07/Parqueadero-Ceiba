@@ -8,29 +8,37 @@ import com.example.inadn.demo.model.domain.IMaximumVehicles;
 import com.example.inadn.demo.model.domain.impl.consts.BadgeRestriction;
 import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerType;
 import com.example.inadn.demo.model.impl.Parking;
+import com.example.inadn.demo.model.impl.consts.ParkingState;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 	
 	private Parking parking;
 
+	public CreateParkingState(Parking p) {
+		super();
+		this.parking = p;
+		
+		String vehicleType = this.parking.getVehicle().getType().getType();
+		Integer position = p.getPosition();
+		
+		Integer total = getMaximumVehicles(vehicleType);
+		boolean state = isParkingAvailable(position, total);
+		
+		p.setState(state ? ParkingState.CHECKED_IN : ParkingState.NOT_ALLOWED);
+		
+	}
+	
 	public CreateParkingState() {
 		super();
-	}
-
-	public CreateParkingState(Parking parking) {
-		super();
-		this.parking = parking;
-		
-		
 	}
 	
 	public Parking getParking() {
 		return parking;
 	}
 
-	public void setParking(Parking parking) {
-		this.parking = parking;
+	public void setParking(Parking p) {
+		this.parking = p;
 	}
 
 	@Override

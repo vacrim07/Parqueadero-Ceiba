@@ -123,7 +123,7 @@ public class ModifyParkingStatusTest {
 		Integer position2 = 6;
 		Integer engineCapacity2 = 650;
 		GregorianCalendar checkIn2 = new GregorianCalendar(2019,1,2,2,0,0);
-		GregorianCalendar checkOut2 = new GregorianCalendar(2019,1,2,12,59,59);
+		GregorianCalendar checkOut2 = new GregorianCalendar(2019,1,2,12,0,0);
 		Motorcycle vehicle2 = new Motorcycle();
 		vehicle2.setEngineCapacity(engineCapacity2);
 		vehicle2.setType(VehicleType.MOTORCYCLE);
