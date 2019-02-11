@@ -122,8 +122,8 @@ public class ModifyParkingStatusTest {
 		// Response 2 : MOTORCYCLE > 500 CC
 		Integer position2 = 6;
 		Integer engineCapacity2 = 650;
-		GregorianCalendar checkIn2 = new GregorianCalendar(2019,1,2,20,0,0);
-		GregorianCalendar checkOut2 = new GregorianCalendar(2019,1,2,20,59,59);
+		GregorianCalendar checkIn2 = new GregorianCalendar(2019,1,2,2,0,0);
+		GregorianCalendar checkOut2 = new GregorianCalendar(2019,1,2,12,59,59);
 		Motorcycle vehicle2 = new Motorcycle();
 		vehicle2.setEngineCapacity(engineCapacity2);
 		vehicle2.setType(VehicleType.MOTORCYCLE);
@@ -158,9 +158,9 @@ public class ModifyParkingStatusTest {
 		assertEquals(ParkingState.CHECKED_OUT.getState(), response1.getParking().getState().getState());
 		assertEquals(9, response1.getParking().getPosition().intValue());
 		// Response 2
-		assertEquals(new Integer(0), response2.parkingHours(checkIn2, checkOut2));
+		assertEquals(new Integer(10), response2.parkingHours(checkIn2, checkOut2));
 		assertEquals(true, response2.isBonusMotorcycleRequired(engineCapacity2));
-		assertEquals(new BigDecimal(2000), response2.getParking().getPrice().getAmount());
+		assertEquals(new BigDecimal(6000), response2.getParking().getPrice().getAmount());
 		assertEquals(ParkingState.CHECKED_OUT.getState(), response2.getParking().getState().getState());
 		assertEquals(5, response2.getParking().getPosition().intValue());
 		// Response 3
