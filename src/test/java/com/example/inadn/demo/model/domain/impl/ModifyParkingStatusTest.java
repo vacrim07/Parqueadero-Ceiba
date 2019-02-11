@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.inadn.demo.DemoApplication;
+import com.example.inadn.demo.model.domain.impl.mock.ParkingMock;
 import com.example.inadn.demo.model.impl.Motorcycle;
 import com.example.inadn.demo.model.impl.Parking;
 import com.example.inadn.demo.model.impl.consts.ParkingState;
@@ -101,70 +102,32 @@ public class ModifyParkingStatusTest {
 	@Test
 	public void modifyParkingStatusResponse() {
 		
-		Parking p1 = new Parking();
-		Parking p2 = new Parking();
-		Parking p3 = new Parking();
-		
-		// Response 1 : CAR
-		Integer position1 = 10;
-		Integer engineCapacity1 = 0;
-		GregorianCalendar checkIn1 = new GregorianCalendar(2019,0,31,22,0,0);
-		GregorianCalendar checkOut1 = new GregorianCalendar(2019,1,2,1,0,0);
-		Motorcycle vehicle1 = new Motorcycle();
-		vehicle1.setEngineCapacity(engineCapacity1);
-		vehicle1.setType(VehicleType.CAR);
-		p1.setVehicle(vehicle1);
-		p1.setPosition(position1);
-		p1.setStartDate(checkIn1);
-		p1.setEndDate(checkOut1);
-		
-		// Response 2 : MOTORCYCLE > 500 CC
-		Integer position2 = 6;
-		Integer engineCapacity2 = 650;
-		GregorianCalendar checkIn2 = new GregorianCalendar(2019,1,2,2,0,0);
-		GregorianCalendar checkOut2 = new GregorianCalendar(2019,1,2,12,0,0);
-		Motorcycle vehicle2 = new Motorcycle();
-		vehicle2.setEngineCapacity(engineCapacity2);
-		vehicle2.setType(VehicleType.MOTORCYCLE);
-		p2.setVehicle(vehicle2);
-		p2.setPosition(position2);
-		p2.setStartDate(checkIn2);
-		p2.setEndDate(checkOut2);
-		
-		// Response 3 : MOTORCYCLE < 500 CC
-		Integer position3 = 1;
-		Integer engineCapacity3 = 150;
-		GregorianCalendar checkIn3 = new GregorianCalendar(2018,11,31,20,0,0);
-		GregorianCalendar checkOut3 = new GregorianCalendar(2019,0,2,20,59,59);
-		Motorcycle vehicle3 = new Motorcycle();
-		vehicle3.setEngineCapacity(engineCapacity3);
-		vehicle3.setType(VehicleType.MOTORCYCLE);
-		p3.setVehicle(vehicle3);
-		p3.setPosition(position3);
-		p3.setStartDate(checkIn3);
-		p3.setEndDate(checkOut3);
-		
-		
+		// Case 1 : CAR: OK
+		Parking p1 = new ParkingMock().getCase7(false);
+		// Case 2 : MOTORCYCLE: > 500 CC : With CAR restrictions ---> No problem
+		Parking p2 = new ParkingMock().getCase5(false);
+		// Case 3 : MOTORCYCLE: OK < 500 CC
+		Parking p3 = new ParkingMock().getCase6(false);
 		
 		ModifyParkingStatus response1 = new ModifyParkingStatus(p1);
 		ModifyParkingStatus response2 = new ModifyParkingStatus(p2);
 		ModifyParkingStatus response3 = new ModifyParkingStatus(p3);
 		
 		// Response 1
-		assertEquals(new Integer(27), response1.parkingHours(checkIn1, checkOut1));
-		assertEquals(false, response1.isBonusMotorcycleRequired(engineCapacity1));
+		assertEquals(new Integer(27), response1.parkingHours(p1.getStartDate(), p1.getEndDate()));
+		assertEquals(false, response1.isBonusMotorcycleRequired(((Motorcycle) p1.getVehicle()).getEngineCapacity()));
 		assertEquals(new BigDecimal(11000), response1.getParking().getPrice().getAmount());
 		assertEquals(ParkingState.CHECKED_OUT.getState(), response1.getParking().getState().getState());
 		assertEquals(9, response1.getParking().getPosition().intValue());
 		// Response 2
-		assertEquals(new Integer(10), response2.parkingHours(checkIn2, checkOut2));
-		assertEquals(true, response2.isBonusMotorcycleRequired(engineCapacity2));
+		assertEquals(new Integer(10), response2.parkingHours(p2.getStartDate(), p2.getEndDate()));
+		assertEquals(true, response2.isBonusMotorcycleRequired(((Motorcycle) p2.getVehicle()).getEngineCapacity()));
 		assertEquals(new BigDecimal(6000), response2.getParking().getPrice().getAmount());
 		assertEquals(ParkingState.CHECKED_OUT.getState(), response2.getParking().getState().getState());
 		assertEquals(5, response2.getParking().getPosition().intValue());
 		// Response 3
-		assertEquals(new Integer(48), response3.parkingHours(checkIn3, checkOut3));
-		assertEquals(false, response3.isBonusMotorcycleRequired(engineCapacity3));
+		assertEquals(new Integer(48), response3.parkingHours(p3.getStartDate(), p3.getEndDate()));
+		assertEquals(false, response3.isBonusMotorcycleRequired(((Motorcycle) p3.getVehicle()).getEngineCapacity()));
 		assertEquals(new BigDecimal(8000), response3.getParking().getPrice().getAmount());
 		assertEquals(ParkingState.CHECKED_OUT.getState(), response3.getParking().getState().getState());
 		assertEquals(0, response3.getParking().getPosition().intValue());

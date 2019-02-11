@@ -3,7 +3,6 @@ package com.example.inadn.demo.model.domain.impl;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,7 +15,6 @@ import com.example.inadn.demo.DemoApplication;
 import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerType;
 import com.example.inadn.demo.model.domain.impl.mock.ParkingMock;
 import com.example.inadn.demo.model.impl.Parking;
-import com.example.inadn.demo.model.impl.Vehicle;
 import com.example.inadn.demo.model.impl.consts.ParkingState;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
@@ -137,9 +135,9 @@ public class CreateParkingStateTest {
 		Parking p3 = new ParkingMock().getCase3(true);
 		// Case 4 : MOTORCYCLE: Parking is full
 		Parking p4 = new ParkingMock().getCase4(true);
-		// Case 5 : MOTORCYCLE: With CAR restrictions ---> No problem
+		// Case 5 : MOTORCYCLE: > 500 CC : With CAR restrictions ---> No problem
 		Parking p5 = new ParkingMock().getCase5(true);
-		// Case 6 : MOTORCYCLE: OK
+		// Case 6 : MOTORCYCLE: OK < 500 CC
 		Parking p6 = new ParkingMock().getCase6(true);
 		
 		CreateParkingState response1 = new CreateParkingState(p1);
