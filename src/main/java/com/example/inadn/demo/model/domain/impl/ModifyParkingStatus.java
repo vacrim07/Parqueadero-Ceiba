@@ -87,7 +87,9 @@ public class ModifyParkingStatus implements ITraffic, IPricing{
 			result = days*PricingValues.DAY_CAR.getAmount() + hoursAdded*PricingValues.HOUR_CAR.getAmount();
 		}else {
 			result = days*PricingValues.DAY_MOTORCYCLE.getAmount() + hoursAdded*PricingValues.HOUR_MOTORCYCLE.getAmount();
-			if(bonus) result = result + PricingValues.EXTRA_MOTORCYCLE.getAmount();
+			if(bonus) {
+				result = result + PricingValues.EXTRA_MOTORCYCLE.getAmount();
+			}
 		}
 		
 		return new BigDecimal(result);

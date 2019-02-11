@@ -84,7 +84,7 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 	@Override
 	public boolean isAnAllowedCar(boolean badgeRestricted, boolean dayRestricted) {
 		if(badgeRestricted) {
-			return dayRestricted ? false : true;
+			return !(dayRestricted);
 		}else {
 			return true;
 		}
