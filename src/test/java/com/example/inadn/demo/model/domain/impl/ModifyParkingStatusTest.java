@@ -164,8 +164,8 @@ public class ModifyParkingStatusTest {
 		assertEquals(ParkingState.CHECKED_OUT.getState(), response2.getParking().getState().getState());
 		assertEquals(5, response2.getParking().getPosition().intValue());
 		// Response 3
-		assertEquals(new Integer(48), response3.parkingHours(checkIn1, checkOut1));
-		assertEquals(false, response3.isBonusMotorcycleRequired(engineCapacity1));
+		assertEquals(new Integer(48), response3.parkingHours(checkIn3, checkOut3));
+		assertEquals(false, response3.isBonusMotorcycleRequired(engineCapacity3));
 		assertEquals(new BigDecimal(8000), response3.getParking().getPrice().getAmount());
 		assertEquals(ParkingState.CHECKED_OUT.getState(), response3.getParking().getState().getState());
 		assertEquals(0, response3.getParking().getPosition().intValue());
