@@ -142,10 +142,10 @@ public class CreateParkingStateTest {
 		Vehicle vehicle1 = new Vehicle();
 		vehicle1.setType(VehicleType.CAR);	
 		p1.setVehicle(vehicle1);
+		p1.setPosition(position1);
 		
 //		GregorianCalendar checkIn1 = new GregorianCalendar(2019,0,31,22,0,0);
 //		GregorianCalendar checkOut1 = new GregorianCalendar(2019,1,2,1,0,0);
-//		p1.setPosition(position1);
 //		p1.setStartDate(checkIn1);
 //		p1.setEndDate(checkOut1);
 		
