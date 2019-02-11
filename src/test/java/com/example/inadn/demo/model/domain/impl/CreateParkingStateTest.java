@@ -141,6 +141,10 @@ public class CreateParkingStateTest {
 		Integer position1 = 21;
 		Vehicle vehicle1 = new Vehicle();
 		vehicle1.setType(VehicleType.CAR);	
+		String badge1 = "EGH-761";
+		vehicle1.setBadge(badge1);
+		GregorianCalendar checkIn1 = new GregorianCalendar(2019,1,14,22,0,0);
+		p1.setStartDate(checkIn1);
 		p1.setVehicle(vehicle1);
 		p1.setPosition(position1);
 		
@@ -182,6 +186,9 @@ public class CreateParkingStateTest {
 		// Response 1
 		assertEquals(new Integer(20), response1.getMaximumVehicles(VehicleType.CAR.getType()));
 		assertEquals(false, response1.isParkingAvailable(position1, response1.getMaximumVehicles(VehicleType.CAR.getType())));
+		assertEquals(true, response1.isVehicleAllowed(response1.getParking().getVehicle().getType().getType()));
+		assertEquals(false, response1.isBadgeRestricted(response1.getParking().getVehicle().getBadge()));
+		assertEquals(false, response1.isARestrictedDay(response1.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingState.NOT_ALLOWED.getState(), response1.getParking().getState().getState());
 	}
 }

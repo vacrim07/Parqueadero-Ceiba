@@ -2,6 +2,7 @@ package com.example.inadn.demo.model.domain.impl;
 
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import com.example.inadn.demo.model.domain.IAllowedVehicles;
 import com.example.inadn.demo.model.domain.IMaximumVehicles;
@@ -19,13 +20,26 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 		super();
 		this.parking = p;
 		
+		boolean state2;
+		
 		String vehicleType = this.parking.getVehicle().getType().getType();
-		Integer position = p.getPosition();
+		Integer position = this.parking.getPosition();
+		String badge = this.parking.getVehicle().getBadge();
+		GregorianCalendar date = this.parking.getStartDate();
+		Integer day = date.get(Calendar.DAY_OF_WEEK);
 		
 		Integer total = getMaximumVehicles(vehicleType);
-		boolean state = isParkingAvailable(position, total);
+		boolean state1 = isParkingAvailable(position, total);
 		
-		p.setState(state ? ParkingState.CHECKED_IN : ParkingState.NOT_ALLOWED);
+		if(isVehicleAllowed(vehicleType)) {
+			boolean badgeRestricted = isBadgeRestricted(badge);
+			boolean restrictedDay = isARestrictedDay(day);
+			state2 = isAnAllowedCar(badgeRestricted, restrictedDay);
+		}else {
+			state2 = false;
+		}
+		
+		p.setState(state1 && state2 ? ParkingState.CHECKED_IN : ParkingState.NOT_ALLOWED);
 		
 	}
 	
