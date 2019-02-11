@@ -1,5 +1,7 @@
 package com.example.inadn.demo.model.impl;
 
+import com.example.inadn.demo.model.impl.consts.VehicleType;
+
 public class Motorcycle extends Vehicle{
 	
 	private Integer engineCapacity;
@@ -8,8 +10,8 @@ public class Motorcycle extends Vehicle{
 		super();
 	}
 
-	public Motorcycle(Integer engineCapacity) {
-		super();
+	public Motorcycle(VehicleType type, String badge, Integer engineCapacity) {
+		super(type, badge);
 		this.engineCapacity = engineCapacity;
 	}
 

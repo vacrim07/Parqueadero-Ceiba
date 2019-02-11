@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.inadn.demo.DemoApplication;
 import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerType;
+import com.example.inadn.demo.model.domain.impl.mock.ParkingMock;
 import com.example.inadn.demo.model.impl.Parking;
 import com.example.inadn.demo.model.impl.Vehicle;
 import com.example.inadn.demo.model.impl.consts.ParkingState;
@@ -127,23 +128,11 @@ public class CreateParkingStateTest {
 	@Test
 	public void modifyParkingStatusResponse() {
 		
-		Parking p1 = new Parking();
 		Parking p2 = new Parking();
 		Parking p3 = new Parking();
 		Parking p4 = new Parking();
 		Parking p5 = new Parking();
 		Parking p6 = new Parking();
-		
-		// Response 1 : Parking is full
-		Integer position1 = 21;
-		Vehicle vehicle1 = new Vehicle();
-		vehicle1.setType(VehicleType.CAR);	
-		String badge1 = "EGH-761";
-		vehicle1.setBadge(badge1);
-		GregorianCalendar checkIn1 = new GregorianCalendar(2019,1,10,22,0,0);
-		p1.setStartDate(checkIn1);
-		p1.setVehicle(vehicle1);
-		p1.setPosition(position1);
 		
 		// Response 2 : CAR Not Restricted
 		Integer position2 = 15;
@@ -200,6 +189,11 @@ public class CreateParkingStateTest {
 		p6.setVehicle(vehicle6);
 		p6.setPosition(position6);
 		
+		
+		
+		// Response 1 : Parking is full
+		Parking p1 = new ParkingMock().getCreatePCase1();
+		
 		CreateParkingState response1 = new CreateParkingState(p1);
 		CreateParkingState response2 = new CreateParkingState(p2);
 		CreateParkingState response3 = new CreateParkingState(p3);
@@ -207,9 +201,9 @@ public class CreateParkingStateTest {
 		CreateParkingState response5 = new CreateParkingState(p5);
 		CreateParkingState response6 = new CreateParkingState(p6);
 		
-		// Response 1
+		// Response 1		
 		assertEquals(new Integer(20), response1.getMaximumVehicles(VehicleType.CAR.getType()));
-		assertEquals(false, response1.isParkingAvailable(position1, response1.getMaximumVehicles(VehicleType.CAR.getType())));
+		assertEquals(false, response1.isParkingAvailable(p1.getPosition(), response1.getMaximumVehicles(VehicleType.CAR.getType())));
 		assertEquals(true, response1.isVehicleRestricted(response1.getParking().getVehicle().getType().getType()));
 		assertEquals(false, response1.isBadgeRestricted(response1.getParking().getVehicle().getBadge()));
 		assertEquals(false, response1.isARestrictedDay(response1.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));

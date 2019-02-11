@@ -4,8 +4,6 @@ import com.example.inadn.demo.model.impl.consts.VehicleType;
 
 public class Vehicle {
 	
-	private Integer id;
-	
 	private VehicleType type;
 	
 	private String badge;
@@ -14,19 +12,10 @@ public class Vehicle {
 		super();
 	}
 
-	public Vehicle(Integer id, VehicleType type, String badge) {
+	public Vehicle(VehicleType type, String badge) {
 		super();
-		this.id = id;
 		this.type = type;
 		this.badge = badge;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public VehicleType getType() {
