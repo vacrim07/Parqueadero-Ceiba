@@ -78,13 +78,13 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 
 	@Override
 	public boolean isARestrictedDay(Integer day) {
-		return day == Calendar.SUNDAY || day == Calendar.MONDAY;
+		return !(day == Calendar.SUNDAY || day == Calendar.MONDAY);
 	}
 
 	@Override
 	public boolean isAnAllowedCar(boolean badgeRestricted, boolean dayRestricted) {
 		if(badgeRestricted) {
-			return dayRestricted;
+			return dayRestricted ? false : true;
 		}else {
 			return true;
 		}
