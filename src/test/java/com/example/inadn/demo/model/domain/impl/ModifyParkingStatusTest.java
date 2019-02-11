@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.example.inadn.demo.DemoApplication;
 import com.example.inadn.demo.model.impl.Motorcycle;
 import com.example.inadn.demo.model.impl.Parking;
-import com.example.inadn.demo.model.impl.Vehicle;
 import com.example.inadn.demo.model.impl.consts.ParkingState;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 

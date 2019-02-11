@@ -128,71 +128,19 @@ public class CreateParkingStateTest {
 	@Test
 	public void modifyParkingStatusResponse() {
 		
-		Parking p2 = new Parking();
-		Parking p3 = new Parking();
-		Parking p4 = new Parking();
-		Parking p5 = new Parking();
-		Parking p6 = new Parking();
 		
-		// Response 2 : CAR Not Restricted
-		Integer position2 = 15;
-		Vehicle vehicle2 = new Vehicle();
-		vehicle2.setType(VehicleType.CAR);	
-		String badge2 = "AGH-761";
-		vehicle2.setBadge(badge2);
-		GregorianCalendar checkIn2 = new GregorianCalendar(2019,1,10,22,0,0);
-		p2.setStartDate(checkIn2);
-		p2.setVehicle(vehicle2);
-		p2.setPosition(position2);
-		
-		// Response 3 : CAR Restricted by date
-		Integer position3 = 15;
-		Vehicle vehicle3 = new Vehicle();
-		vehicle3.setType(VehicleType.CAR);	
-		String badge3 = "AGH-761";
-		vehicle3.setBadge(badge3);
-		GregorianCalendar checkIn3 = new GregorianCalendar(2019,1,14,22,0,0);
-		p3.setStartDate(checkIn3);
-		p3.setVehicle(vehicle3);
-		p3.setPosition(position3);
-		
-		// Response 4 : MOTORCYCLE Parking is full
-		Integer position4 = 15;
-		Vehicle vehicle4 = new Vehicle();
-		vehicle4.setType(VehicleType.MOTORCYCLE);	
-		String badge4 = "IGH-761";
-		vehicle4.setBadge(badge4);
-		GregorianCalendar checkIn4 = new GregorianCalendar(2019,1,10,22,0,0);
-		p4.setStartDate(checkIn4);
-		p4.setVehicle(vehicle4);
-		p4.setPosition(position4);
-		
-		// Response 5 : MOTORCYCLE with CAR restrictions ---> No problem
-		Integer position5 = 8;
-		Vehicle vehicle5 = new Vehicle();
-		vehicle5.setType(VehicleType.MOTORCYCLE);	
-		String badge5 = "AGH-761";
-		vehicle5.setBadge(badge5);
-		GregorianCalendar checkIn5 = new GregorianCalendar(2019,1,14,22,0,0);
-		p5.setStartDate(checkIn5);
-		p5.setVehicle(vehicle5);
-		p5.setPosition(position5);
-		
-		// Response 6 : MOTORCYCLE Not Restricted
-		Integer position6 = 8;
-		Vehicle vehicle6 = new Vehicle();
-		vehicle6.setType(VehicleType.MOTORCYCLE);	
-		String badge6 = "LGH-761";
-		vehicle6.setBadge(badge6);
-		GregorianCalendar checkIn6 = new GregorianCalendar(2019,1,10,22,0,0);
-		p6.setStartDate(checkIn6);
-		p6.setVehicle(vehicle6);
-		p6.setPosition(position6);
-		
-		
-		
-		// Response 1 : Parking is full
+		// Case 1 : CAR: Parking is full
 		Parking p1 = new ParkingMock().getCase1(true);
+		// Case 2 : CAR: Restricted by badge, but not by day
+		Parking p2 = new ParkingMock().getCase2(true);
+		// Case 3 : CAR: Restricted not by badge, restricted by day
+		Parking p3 = new ParkingMock().getCase3(true);
+		// Case 4 : MOTORCYCLE: Parking is full
+		Parking p4 = new ParkingMock().getCase4(true);
+		// Case 5 : MOTORCYCLE: With CAR restrictions ---> No problem
+		Parking p5 = new ParkingMock().getCase5(true);
+		// Case 6 : MOTORCYCLE: OK
+		Parking p6 = new ParkingMock().getCase6(true);
 		
 		CreateParkingState response1 = new CreateParkingState(p1);
 		CreateParkingState response2 = new CreateParkingState(p2);
@@ -210,35 +158,35 @@ public class CreateParkingStateTest {
 		assertEquals(ParkingState.NOT_ALLOWED.getState(), response1.getParking().getState().getState());
 		// Response 2
 		assertEquals(new Integer(20), response2.getMaximumVehicles(VehicleType.CAR.getType()));
-		assertEquals(true, response2.isParkingAvailable(position2, response2.getMaximumVehicles(VehicleType.CAR.getType())));
+		assertEquals(true, response2.isParkingAvailable(p2.getPosition(), response2.getMaximumVehicles(VehicleType.CAR.getType())));
 		assertEquals(true, response2.isVehicleRestricted(response2.getParking().getVehicle().getType().getType()));
 		assertEquals(true, response2.isBadgeRestricted(response2.getParking().getVehicle().getBadge()));
 		assertEquals(false, response2.isARestrictedDay(response2.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingState.CHECKED_IN.getState(), response2.getParking().getState().getState());
 		// Response 3
 		assertEquals(new Integer(20), response3.getMaximumVehicles(VehicleType.CAR.getType()));
-		assertEquals(true, response3.isParkingAvailable(position3, response3.getMaximumVehicles(VehicleType.CAR.getType())));
+		assertEquals(true, response3.isParkingAvailable(p3.getPosition(), response3.getMaximumVehicles(VehicleType.CAR.getType())));
 		assertEquals(true, response3.isVehicleRestricted(response3.getParking().getVehicle().getType().getType()));
 		assertEquals(true, response3.isBadgeRestricted(response3.getParking().getVehicle().getBadge()));
 		assertEquals(true, response3.isARestrictedDay(response3.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingState.NOT_ALLOWED.getState(), response3.getParking().getState().getState());
 		// Response 4
 		assertEquals(new Integer(10), response4.getMaximumVehicles(VehicleType.MOTORCYCLE.getType()));
-		assertEquals(false, response4.isParkingAvailable(position4, response4.getMaximumVehicles(VehicleType.MOTORCYCLE.getType())));
+		assertEquals(false, response4.isParkingAvailable(p4.getPosition(), response4.getMaximumVehicles(VehicleType.MOTORCYCLE.getType())));
 		assertEquals(false, response4.isVehicleRestricted(response4.getParking().getVehicle().getType().getType()));
 		assertEquals(false, response4.isBadgeRestricted(response4.getParking().getVehicle().getBadge()));
 		assertEquals(false, response4.isARestrictedDay(response4.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingState.NOT_ALLOWED.getState(), response4.getParking().getState().getState());
 		// Response 5
 		assertEquals(new Integer(10), response5.getMaximumVehicles(VehicleType.MOTORCYCLE.getType()));
-		assertEquals(true, response5.isParkingAvailable(position5, response5.getMaximumVehicles(VehicleType.MOTORCYCLE.getType())));
+		assertEquals(true, response5.isParkingAvailable(p5.getPosition(), response5.getMaximumVehicles(VehicleType.MOTORCYCLE.getType())));
 		assertEquals(false, response5.isVehicleRestricted(response5.getParking().getVehicle().getType().getType()));
 		assertEquals(true, response5.isBadgeRestricted(response5.getParking().getVehicle().getBadge()));
 		assertEquals(true, response5.isARestrictedDay(response5.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingState.CHECKED_IN.getState(), response5.getParking().getState().getState());
 		// Response 6
 		assertEquals(new Integer(10), response6.getMaximumVehicles(VehicleType.MOTORCYCLE.getType()));
-		assertEquals(true, response6.isParkingAvailable(position6, response6.getMaximumVehicles(VehicleType.MOTORCYCLE.getType())));
+		assertEquals(true, response6.isParkingAvailable(p6.getPosition(), response6.getMaximumVehicles(VehicleType.MOTORCYCLE.getType())));
 		assertEquals(false, response6.isVehicleRestricted(response6.getParking().getVehicle().getType().getType()));
 		assertEquals(false, response6.isBadgeRestricted(response6.getParking().getVehicle().getBadge()));
 		assertEquals(false, response6.isARestrictedDay(response6.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
