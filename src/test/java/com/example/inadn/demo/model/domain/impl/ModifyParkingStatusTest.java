@@ -98,7 +98,8 @@ public class ModifyParkingStatusTest {
 	@Test
 	public void modifyParkingStatusResponse() {
 		
-		Parking p2 = p1;
+		Parking p1 = new Parking();
+		Parking p2 = new Parking();
 		
 		// Response 1 : CAR
 		Integer position1 = 10;
