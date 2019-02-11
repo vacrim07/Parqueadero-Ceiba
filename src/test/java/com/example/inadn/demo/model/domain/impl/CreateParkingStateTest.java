@@ -137,7 +137,7 @@ public class CreateParkingStateTest {
 		Parking p2 = new Parking();
 		Parking p3 = new Parking();
 		
-		// Response 1 : CAR
+		// Response 1 : Parking is full
 		Integer position1 = 21;
 		Vehicle vehicle1 = new Vehicle();
 		vehicle1.setType(VehicleType.CAR);	
@@ -148,40 +148,19 @@ public class CreateParkingStateTest {
 		p1.setVehicle(vehicle1);
 		p1.setPosition(position1);
 		
-//		GregorianCalendar checkIn1 = new GregorianCalendar(2019,0,31,22,0,0);
-//		GregorianCalendar checkOut1 = new GregorianCalendar(2019,1,2,1,0,0);
-//		p1.setStartDate(checkIn1);
-//		p1.setEndDate(checkOut1);
-		
-		// Response 2 : MOTORCYCLE > 500 CC
-//		Integer position2 = 6;
-//		Integer engineCapacity2 = 650;
-//		GregorianCalendar checkIn2 = new GregorianCalendar(2019,1,2,2,0,0);
-//		GregorianCalendar checkOut2 = new GregorianCalendar(2019,1,2,12,0,0);
-//		Motorcycle vehicle2 = new Motorcycle();
-//		vehicle2.setEngineCapacity(engineCapacity2);
-//		vehicle2.setType(VehicleType.MOTORCYCLE);
-//		p2.setVehicle(vehicle2);
-//		p2.setPosition(position2);
-//		p2.setStartDate(checkIn2);
-//		p2.setEndDate(checkOut2);
-		
-		// Response 3 : MOTORCYCLE < 500 CC
-//		Integer position3 = 1;
-//		Integer engineCapacity3 = 150;
-//		GregorianCalendar checkIn3 = new GregorianCalendar(2018,11,31,20,0,0);
-//		GregorianCalendar checkOut3 = new GregorianCalendar(2019,0,2,20,59,59);
-//		Motorcycle vehicle3 = new Motorcycle();
-//		vehicle3.setEngineCapacity(engineCapacity3);
-//		vehicle3.setType(VehicleType.MOTORCYCLE);
-//		p3.setVehicle(vehicle3);
-//		p3.setPosition(position3);
-//		p3.setStartDate(checkIn3);
-//		p3.setEndDate(checkOut3);
-		
-		
+		// Response 2 : CAR Restricted
+		Integer position2 = 15;
+		Vehicle vehicle2 = new Vehicle();
+		vehicle2.setType(VehicleType.CAR);	
+		String badge2 = "AGH-761";
+		vehicle2.setBadge(badge2);
+		GregorianCalendar checkIn2 = new GregorianCalendar(2019,1,10,22,0,0);
+		p2.setStartDate(checkIn2);
+		p2.setVehicle(vehicle2);
+		p2.setPosition(position2);		
 		
 		CreateParkingState response1 = new CreateParkingState(p1);
+		CreateParkingState response2 = new CreateParkingState(p2);
 		
 		// Response 1
 		assertEquals(new Integer(20), response1.getMaximumVehicles(VehicleType.CAR.getType()));
@@ -190,5 +169,12 @@ public class CreateParkingStateTest {
 		assertEquals(false, response1.isBadgeRestricted(response1.getParking().getVehicle().getBadge()));
 		assertEquals(false, response1.isARestrictedDay(response1.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingState.NOT_ALLOWED.getState(), response1.getParking().getState().getState());
+		// Response 2
+		assertEquals(new Integer(20), response2.getMaximumVehicles(VehicleType.CAR.getType()));
+		assertEquals(true, response2.isParkingAvailable(position2, response2.getMaximumVehicles(VehicleType.CAR.getType())));
+		assertEquals(true, response2.isVehicleAllowed(response2.getParking().getVehicle().getType().getType()));
+		assertEquals(true, response2.isBadgeRestricted(response2.getParking().getVehicle().getBadge()));
+		assertEquals(false, response2.isARestrictedDay(response2.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
+		assertEquals(ParkingState.NOT_ALLOWED.getState(), response2.getParking().getState().getState());
 	}
 }
