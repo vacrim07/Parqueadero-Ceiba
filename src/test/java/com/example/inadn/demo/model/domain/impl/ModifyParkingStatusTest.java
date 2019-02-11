@@ -62,14 +62,14 @@ public class ModifyParkingStatusTest {
 	}
 	
 	@Test
-	public void pricingHours() {
+	public void parkingHours() {
 		
-		GregorianCalendar checkInOne = new GregorianCalendar(2018,11,31,20,0,0);
-		GregorianCalendar checkOutOne = new GregorianCalendar(2019,0,2,20,59,59);
+		GregorianCalendar checkInOne = new GregorianCalendar(2018,11,31,20,55,0);
+		GregorianCalendar checkOutOne = new GregorianCalendar(2019,0,2,20,20,59);
 		
 		Integer case1 = modify.parkingHours(checkInOne, checkOutOne);
 		
-		assertEquals(new Integer(48),case1);
+		assertEquals(new Integer(47),case1);
 	}
 	
 	@Test

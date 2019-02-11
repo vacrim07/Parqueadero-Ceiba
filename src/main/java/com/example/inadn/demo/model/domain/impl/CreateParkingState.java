@@ -20,6 +20,24 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 		super();
 		this.parking = p;
 		
+		run(this.parking);
+		
+	}
+	
+	public CreateParkingState() {
+		super();
+	}
+	
+	public Parking getParking() {
+		return parking;
+	}
+
+	public void setParking(Parking p) {
+		this.parking = p;
+	}
+	
+	public void run(Parking p) {
+		
 		boolean state2;
 		
 		String vehicleType = this.parking.getVehicle().getType().getType();
@@ -40,19 +58,6 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 		}
 		
 		p.setState(state1 && !state2 ? ParkingState.CHECKED_IN : ParkingState.NOT_ALLOWED);
-		
-	}
-	
-	public CreateParkingState() {
-		super();
-	}
-	
-	public Parking getParking() {
-		return parking;
-	}
-
-	public void setParking(Parking p) {
-		this.parking = p;
 	}
 
 	@Override
