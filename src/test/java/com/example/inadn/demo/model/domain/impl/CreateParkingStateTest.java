@@ -18,6 +18,7 @@ import com.example.inadn.demo.DemoApplication;
 import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerType;
 import com.example.inadn.demo.model.impl.Motorcycle;
 import com.example.inadn.demo.model.impl.Parking;
+import com.example.inadn.demo.model.impl.Vehicle;
 import com.example.inadn.demo.model.impl.consts.ParkingState;
 import com.example.inadn.demo.model.impl.consts.VehicleType;
 
@@ -138,12 +139,11 @@ public class CreateParkingStateTest {
 		
 		// Response 1 : CAR
 		Integer position1 = 21;
-//		Integer engineCapacity1 = 0;
+		Vehicle vehicle1 = new Vehicle();
+		vehicle1.setType(VehicleType.CAR);		
 //		GregorianCalendar checkIn1 = new GregorianCalendar(2019,0,31,22,0,0);
 //		GregorianCalendar checkOut1 = new GregorianCalendar(2019,1,2,1,0,0);
-//		Motorcycle vehicle1 = new Motorcycle();
-//		vehicle1.setEngineCapacity(engineCapacity1);
-//		vehicle1.setType(VehicleType.CAR);
+		
 //		p1.setVehicle(vehicle1);
 //		p1.setPosition(position1);
 //		p1.setStartDate(checkIn1);
