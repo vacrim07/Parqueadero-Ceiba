@@ -11,7 +11,6 @@ public class Parking implements Serializable{
 	
 	private Integer position;
 	
-	//@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 	private ParkingStateEnum state;
 	
 	@JsonFormat(pattern="yyyy-MM-dd@HH:mm:ss.SSSZ")
