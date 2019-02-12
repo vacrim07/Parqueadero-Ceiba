@@ -1,5 +1,7 @@
 package com.example.inadn.demo.model.impl.consts;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum ParkingStateEnum {
 	
 	CHECKED_IN ("checked in"),
@@ -11,7 +13,8 @@ public enum ParkingStateEnum {
 	private ParkingStateEnum(String state) {
 		this.state = state;
 	}
-
+	
+	@JsonValue
 	public String getState() {
 		return state;
 	}

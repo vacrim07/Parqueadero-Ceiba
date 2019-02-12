@@ -2,6 +2,7 @@ package com.example.inadn.demo.model.domain.impl.mock;
 
 import java.util.GregorianCalendar;
 
+import com.example.inadn.demo.model.impl.Car;
 import com.example.inadn.demo.model.impl.Money;
 import com.example.inadn.demo.model.impl.Motorcycle;
 import com.example.inadn.demo.model.impl.Parking;
@@ -40,10 +41,9 @@ public class ParkingMock {
 		
 		VehicleTypeEnum vehicleType = VehicleTypeEnum.CAR;
 		String badge = "EGH-761";
-		Integer engineCapacity = 0;
 		
 		Money price = new Money("COP",null);
-		Motorcycle vehicle = new Motorcycle(vehicleType, badge, engineCapacity);
+		Car vehicle = new Car(vehicleType, badge);
 		
 		Parking p = new Parking(position, parkingState, price, vehicle, checkIn, checkOut);
 		
@@ -61,10 +61,9 @@ public class ParkingMock {
 		
 		VehicleTypeEnum vehicleType = VehicleTypeEnum.CAR;
 		String badge = "AGH-761";
-		Integer engineCapacity = 0;
 		
 		Money price = new Money("COP",null);
-		Motorcycle vehicle = new Motorcycle(vehicleType, badge, engineCapacity);
+		Car vehicle = new Car(vehicleType, badge);
 		
 		Parking p = new Parking(position, parkingState, price, vehicle, checkIn, checkOut);
 		
@@ -82,10 +81,9 @@ public class ParkingMock {
 		
 		VehicleTypeEnum vehicleType = VehicleTypeEnum.CAR;
 		String badge = "AGH-761";
-		Integer engineCapacity = 0;
 		
 		Money price = new Money("COP",null);
-		Motorcycle vehicle = new Motorcycle(vehicleType, badge, engineCapacity);
+		Car vehicle = new Car(vehicleType, badge);
 		
 		Parking p = new Parking(position, parkingState, price, vehicle, checkIn, checkOut);
 		
@@ -166,10 +164,9 @@ public class ParkingMock {
 		
 		VehicleTypeEnum vehicleType = VehicleTypeEnum.CAR;
 		String badge = "AGH-761";
-		Integer engineCapacity = 0;
 		
 		Money price = new Money("COP",null);
-		Motorcycle vehicle = new Motorcycle(vehicleType, badge, engineCapacity);
+		Car vehicle = new Car(vehicleType, badge);
 		
 		Parking p = new Parking(position, parkingState, price, vehicle, checkIn, checkOut);
 		

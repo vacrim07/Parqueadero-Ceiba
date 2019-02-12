@@ -40,7 +40,7 @@ public class CreateParking implements IAllowedVehicles, IMaximumVehicles{
 		
 		boolean state2;
 		
-		String vehicleType = this.parking.getVehicle().getType().getType();
+		String vehicleType = this.parking.getVehicle().getName().getType();
 		Integer position = this.parking.getPosition();
 		String badge = this.parking.getVehicle().getBadge();
 		GregorianCalendar date = this.parking.getStartDate();

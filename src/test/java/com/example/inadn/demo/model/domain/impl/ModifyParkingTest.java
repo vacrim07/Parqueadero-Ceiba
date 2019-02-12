@@ -27,7 +27,7 @@ public class ModifyParkingTest {
 	ModifyParking modify;
 	
 	@Before
-	public void start() {
+	public void setUp() {
 		modify = new ModifyParking();
 	}
 	
@@ -115,7 +115,6 @@ public class ModifyParkingTest {
 		
 		// Response 1
 		assertEquals(new Integer(27), response1.parkingHours(p1.getStartDate(), p1.getEndDate()));
-		assertEquals(false, response1.isBonusMotorcycleRequired(((Motorcycle) p1.getVehicle()).getEngineCapacity()));
 		assertEquals(new BigDecimal(11000), response1.getParking().getPrice().getAmount());
 		assertEquals(ParkingStateEnum.CHECKED_OUT.getState(), response1.getParking().getState().getState());
 		assertEquals(9, response1.getParking().getPosition().intValue());

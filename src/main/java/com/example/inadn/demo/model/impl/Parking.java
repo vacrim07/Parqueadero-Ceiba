@@ -1,27 +1,28 @@
 package com.example.inadn.demo.model.impl;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-public class Parking {
+public class Parking implements Serializable{
+	
+	private static final long serialVersionUID= 1L;
 	
 	private Integer position;
 	
+	//@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 	private ParkingStateEnum state;
-	
-	@JsonSerialize()
-	private Money price;
-	
-
-	private Vehicle vehicle;
 	
 	@JsonFormat(pattern="yyyy-MM-dd@HH:mm:ss.SSSZ")
 	private GregorianCalendar startDate;
 	
 	@JsonFormat(pattern="yyyy-MM-dd@HH:mm:ss.SSSZ")
 	private GregorianCalendar endDate;
+	
+	private Money price;
+
+	private Vehicle vehicle;
 
 	public Parking() {
 		super();
@@ -45,7 +46,7 @@ public class Parking {
 	public void setPosition(Integer position) {
 		this.position = position;
 	}
-
+	
 	public ParkingStateEnum getState() {
 		return state;
 	}

@@ -1,15 +1,19 @@
 package com.example.inadn.demo.model.impl;
 
+import java.io.Serializable;
+
 import com.example.inadn.demo.model.impl.consts.VehicleTypeEnum;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
-@JsonSubTypes(@Type(value = Motorcycle.class, name = "motorcycle"))
-public abstract class Vehicle {
+@JsonSubTypes({@Type(value = Motorcycle.class, name = "motorcycle"),@Type(value = Car.class, name = "car")})
+public abstract class Vehicle implements Serializable{
 	
-	private VehicleTypeEnum type;
+	private static final long serialVersionUID= 1L;
+	
+	private VehicleTypeEnum name;
 	
 	private String badge;
 
@@ -17,18 +21,18 @@ public abstract class Vehicle {
 		super();
 	}
 
-	public Vehicle(VehicleTypeEnum type, String badge) {
+	public Vehicle(VehicleTypeEnum name, String badge) {
 		super();
-		this.type = type;
+		this.name = name;
 		this.badge = badge;
 	}
 
-	public VehicleTypeEnum getType() {
-		return type;
+	public VehicleTypeEnum getName() {
+		return name;
 	}
 
-	public void setType(VehicleTypeEnum type) {
-		this.type = type;
+	public void setName(VehicleTypeEnum type) {
+		this.name = type;
 	}
 
 	public String getBadge() {

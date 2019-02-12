@@ -43,9 +43,9 @@ public class ModifyParking implements ITraffic, IPricing{
 		
 		Money money = new Money();
 		Vehicle vehicle = this.parking.getVehicle();
-		Integer engineCapacity = ((Motorcycle) vehicle).getEngineCapacity();
-		String vehicleType = this.parking.getVehicle().getType().getType();
-		
+		String vehicleType = this.parking.getVehicle().getName().getType();
+		Integer engineCapacity = vehicleType.equalsIgnoreCase(VehicleTypeEnum.MOTORCYCLE.getType()) ?
+				((Motorcycle) vehicle).getEngineCapacity() : null;
 		Integer parkingTime = parkingHours(this.parking.getStartDate(), this.parking.getEndDate());
 		boolean bonusCondition = isBonusMotorcycleRequired(engineCapacity);
 		BigDecimal price = parkingPricing(parkingTime,vehicleType,bonusCondition);
@@ -63,7 +63,8 @@ public class ModifyParking implements ITraffic, IPricing{
 	
 	@Override
 	public boolean isBonusMotorcycleRequired(Integer engineCapacity) {
-		return engineCapacity > MotorcycleEngineCapacityEnum.TOP.getValue();
+		Integer e = engineCapacity == null ? 0 : engineCapacity;
+		return e > MotorcycleEngineCapacityEnum.TOP.getValue();
 	}
 
 	@Override

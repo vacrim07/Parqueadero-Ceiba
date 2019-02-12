@@ -1,5 +1,7 @@
 package com.example.inadn.demo.model.impl.consts;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum VehicleTypeEnum {
 	
 	CAR ("car"),
@@ -11,6 +13,7 @@ public enum VehicleTypeEnum {
 		this.type = type;
 	}
 
+	@JsonValue
 	public String getType() {
 		return type;
 	}

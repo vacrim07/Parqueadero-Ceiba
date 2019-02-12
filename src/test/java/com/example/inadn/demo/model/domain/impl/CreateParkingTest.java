@@ -150,42 +150,42 @@ public class CreateParkingTest {
 		// Response 1		
 		assertEquals(new Integer(20), response1.getMaximumVehicles(VehicleTypeEnum.CAR.getType()));
 		assertEquals(false, response1.isParkingAvailable(p1.getPosition(), response1.getMaximumVehicles(VehicleTypeEnum.CAR.getType())));
-		assertEquals(true, response1.isVehicleRestricted(response1.getParking().getVehicle().getType().getType()));
+		assertEquals(true, response1.isVehicleRestricted(response1.getParking().getVehicle().getName().getType()));
 		assertEquals(false, response1.isBadgeRestricted(response1.getParking().getVehicle().getBadge()));
 		assertEquals(false, response1.isARestrictedDay(response1.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingStateEnum.NOT_ALLOWED.getState(), response1.getParking().getState().getState());
 		// Response 2
 		assertEquals(new Integer(20), response2.getMaximumVehicles(VehicleTypeEnum.CAR.getType()));
 		assertEquals(true, response2.isParkingAvailable(p2.getPosition(), response2.getMaximumVehicles(VehicleTypeEnum.CAR.getType())));
-		assertEquals(true, response2.isVehicleRestricted(response2.getParking().getVehicle().getType().getType()));
+		assertEquals(true, response2.isVehicleRestricted(response2.getParking().getVehicle().getName().getType()));
 		assertEquals(true, response2.isBadgeRestricted(response2.getParking().getVehicle().getBadge()));
 		assertEquals(false, response2.isARestrictedDay(response2.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingStateEnum.CHECKED_IN.getState(), response2.getParking().getState().getState());
 		// Response 3
 		assertEquals(new Integer(20), response3.getMaximumVehicles(VehicleTypeEnum.CAR.getType()));
 		assertEquals(true, response3.isParkingAvailable(p3.getPosition(), response3.getMaximumVehicles(VehicleTypeEnum.CAR.getType())));
-		assertEquals(true, response3.isVehicleRestricted(response3.getParking().getVehicle().getType().getType()));
+		assertEquals(true, response3.isVehicleRestricted(response3.getParking().getVehicle().getName().getType()));
 		assertEquals(true, response3.isBadgeRestricted(response3.getParking().getVehicle().getBadge()));
 		assertEquals(true, response3.isARestrictedDay(response3.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingStateEnum.NOT_ALLOWED.getState(), response3.getParking().getState().getState());
 		// Response 4
 		assertEquals(new Integer(10), response4.getMaximumVehicles(VehicleTypeEnum.MOTORCYCLE.getType()));
 		assertEquals(false, response4.isParkingAvailable(p4.getPosition(), response4.getMaximumVehicles(VehicleTypeEnum.MOTORCYCLE.getType())));
-		assertEquals(false, response4.isVehicleRestricted(response4.getParking().getVehicle().getType().getType()));
+		assertEquals(false, response4.isVehicleRestricted(response4.getParking().getVehicle().getName().getType()));
 		assertEquals(false, response4.isBadgeRestricted(response4.getParking().getVehicle().getBadge()));
 		assertEquals(false, response4.isARestrictedDay(response4.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingStateEnum.NOT_ALLOWED.getState(), response4.getParking().getState().getState());
 		// Response 5
 		assertEquals(new Integer(10), response5.getMaximumVehicles(VehicleTypeEnum.MOTORCYCLE.getType()));
 		assertEquals(true, response5.isParkingAvailable(p5.getPosition(), response5.getMaximumVehicles(VehicleTypeEnum.MOTORCYCLE.getType())));
-		assertEquals(false, response5.isVehicleRestricted(response5.getParking().getVehicle().getType().getType()));
+		assertEquals(false, response5.isVehicleRestricted(response5.getParking().getVehicle().getName().getType()));
 		assertEquals(true, response5.isBadgeRestricted(response5.getParking().getVehicle().getBadge()));
 		assertEquals(true, response5.isARestrictedDay(response5.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingStateEnum.CHECKED_IN.getState(), response5.getParking().getState().getState());
 		// Response 6
 		assertEquals(new Integer(10), response6.getMaximumVehicles(VehicleTypeEnum.MOTORCYCLE.getType()));
 		assertEquals(true, response6.isParkingAvailable(p6.getPosition(), response6.getMaximumVehicles(VehicleTypeEnum.MOTORCYCLE.getType())));
-		assertEquals(false, response6.isVehicleRestricted(response6.getParking().getVehicle().getType().getType()));
+		assertEquals(false, response6.isVehicleRestricted(response6.getParking().getVehicle().getName().getType()));
 		assertEquals(false, response6.isBadgeRestricted(response6.getParking().getVehicle().getBadge()));
 		assertEquals(false, response6.isARestrictedDay(response6.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingStateEnum.CHECKED_IN.getState(), response6.getParking().getState().getState());

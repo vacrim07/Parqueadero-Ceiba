@@ -1,8 +1,11 @@
 package com.example.inadn.demo.model.impl;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Money {
+public class Money implements Serializable{
+	
+	private static final long serialVersionUID= 1L;
 	
 	private String currency;
 	
