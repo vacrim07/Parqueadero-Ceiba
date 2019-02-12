@@ -1,10 +1,15 @@
 package com.example.inadn.demo.model.impl;
 
-import com.example.inadn.demo.model.impl.consts.VehicleType;
+import com.example.inadn.demo.model.impl.consts.VehicleTypeEnum;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-public class Vehicle {
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes(@Type(value = Motorcycle.class, name = "motorcycle"))
+public abstract class Vehicle {
 	
-	private VehicleType type;
+	private VehicleTypeEnum type;
 	
 	private String badge;
 
@@ -12,17 +17,17 @@ public class Vehicle {
 		super();
 	}
 
-	public Vehicle(VehicleType type, String badge) {
+	public Vehicle(VehicleTypeEnum type, String badge) {
 		super();
 		this.type = type;
 		this.badge = badge;
 	}
 
-	public VehicleType getType() {
+	public VehicleTypeEnum getType() {
 		return type;
 	}
 
-	public void setType(VehicleType type) {
+	public void setType(VehicleTypeEnum type) {
 		this.type = type;
 	}
 

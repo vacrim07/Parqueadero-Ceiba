@@ -6,17 +6,17 @@ import java.util.GregorianCalendar;
 
 import com.example.inadn.demo.model.domain.IAllowedVehicles;
 import com.example.inadn.demo.model.domain.IMaximumVehicles;
-import com.example.inadn.demo.model.domain.impl.consts.BadgeRestriction;
-import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerType;
+import com.example.inadn.demo.model.domain.impl.consts.BadgeRestrictionEnum;
+import com.example.inadn.demo.model.domain.impl.consts.MaximumVehiclesPerTypeEnum;
 import com.example.inadn.demo.model.impl.Parking;
-import com.example.inadn.demo.model.impl.consts.ParkingState;
-import com.example.inadn.demo.model.impl.consts.VehicleType;
+import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
+import com.example.inadn.demo.model.impl.consts.VehicleTypeEnum;
 
-public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
+public class CreateParking implements IAllowedVehicles, IMaximumVehicles{
 	
 	private Parking parking;
 
-	public CreateParkingState(Parking p) {
+	public CreateParking(Parking p) {
 		super();
 		this.parking = p;
 		
@@ -24,7 +24,7 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 		
 	}
 	
-	public CreateParkingState() {
+	public CreateParking() {
 		super();
 	}
 	
@@ -57,13 +57,13 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 			state2 = false;
 		}
 		
-		p.setState(state1 && !state2 ? ParkingState.CHECKED_IN : ParkingState.NOT_ALLOWED);
+		p.setState(state1 && !state2 ? ParkingStateEnum.CHECKED_IN : ParkingStateEnum.NOT_ALLOWED);
 	}
 
 	@Override
 	public Integer getMaximumVehicles(String vehicleType) {
-		return vehicleType.equalsIgnoreCase(VehicleType.CAR.getType()) ?
-				MaximumVehiclesPerType.CAR.getMaximum() : MaximumVehiclesPerType.MOTORCYCLE.getMaximum();
+		return vehicleType.equalsIgnoreCase(VehicleTypeEnum.CAR.getType()) ?
+				MaximumVehiclesPerTypeEnum.CAR.getMaximum() : MaximumVehiclesPerTypeEnum.MOTORCYCLE.getMaximum();
 	}
 
 	@Override
@@ -73,12 +73,12 @@ public class CreateParkingState implements IAllowedVehicles, IMaximumVehicles{
 
 	@Override
 	public boolean isVehicleRestricted(String vehicleType) {
-		return vehicleType.equalsIgnoreCase(VehicleType.CAR.getType());
+		return vehicleType.equalsIgnoreCase(VehicleTypeEnum.CAR.getType());
 	}
 
 	@Override
 	public boolean isBadgeRestricted(String badge) {
-		return badge.substring(0,1).equalsIgnoreCase(BadgeRestriction.A.getRestriction());
+		return badge.substring(0,1).equalsIgnoreCase(BadgeRestrictionEnum.A.getRestriction());
 	}
 
 	@Override

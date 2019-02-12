@@ -1,6 +1,6 @@
 package com.example.inadn.demo.model.domain.impl.consts;
 
-public enum PricingValues {
+public enum PricingValuesEnum {
 	
 	HOUR_CAR (1000),
 	HOUR_MOTORCYCLE (500),
@@ -10,7 +10,7 @@ public enum PricingValues {
 	
 	private final Integer amount;
 
-	private PricingValues(Integer amount) {
+	private PricingValuesEnum(Integer amount) {
 		this.amount = amount;
 	}
 

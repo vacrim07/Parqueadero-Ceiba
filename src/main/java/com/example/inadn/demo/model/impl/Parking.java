@@ -1,28 +1,33 @@
 package com.example.inadn.demo.model.impl;
 
 import java.util.GregorianCalendar;
-
-import com.example.inadn.demo.model.impl.consts.ParkingState;
+import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 public class Parking {
 	
 	private Integer position;
 	
-	private ParkingState state;
+	private ParkingStateEnum state;
 	
+	@JsonSerialize()
 	private Money price;
 	
+
 	private Vehicle vehicle;
 	
+	@JsonFormat(pattern="yyyy-MM-dd@HH:mm:ss.SSSZ")
 	private GregorianCalendar startDate;
 	
+	@JsonFormat(pattern="yyyy-MM-dd@HH:mm:ss.SSSZ")
 	private GregorianCalendar endDate;
 
 	public Parking() {
 		super();
 	}
 
-	public Parking(Integer position, ParkingState state, Money price, Vehicle vehicle,
+	public Parking(Integer position, ParkingStateEnum state, Money price, Vehicle vehicle,
 			GregorianCalendar startDate, GregorianCalendar endDate) {
 		super();
 		this.position = position;
@@ -41,11 +46,11 @@ public class Parking {
 		this.position = position;
 	}
 
-	public ParkingState getState() {
+	public ParkingStateEnum getState() {
 		return state;
 	}
 
-	public void setState(ParkingState state) {
+	public void setState(ParkingStateEnum state) {
 		this.state = state;
 	}
 

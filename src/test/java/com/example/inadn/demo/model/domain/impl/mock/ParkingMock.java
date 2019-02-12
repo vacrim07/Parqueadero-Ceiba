@@ -5,8 +5,8 @@ import java.util.GregorianCalendar;
 import com.example.inadn.demo.model.impl.Money;
 import com.example.inadn.demo.model.impl.Motorcycle;
 import com.example.inadn.demo.model.impl.Parking;
-import com.example.inadn.demo.model.impl.consts.ParkingState;
-import com.example.inadn.demo.model.impl.consts.VehicleType;
+import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
+import com.example.inadn.demo.model.impl.consts.VehicleTypeEnum;
 
 public class ParkingMock {
 	
@@ -34,13 +34,11 @@ public class ParkingMock {
 		
 		Integer position = 21;
 		GregorianCalendar checkIn = new GregorianCalendar(2019,1,10,22,0,0);
+		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,11,22,0,0);
 		
-		//TODO revisar checkOut
-		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,10,22,0,0);
+		ParkingStateEnum parkingState = ParkingStateEnum.CHECKED_IN;
 		
-		ParkingState parkingState = ParkingState.CHECKED_IN;
-		
-		VehicleType vehicleType = VehicleType.CAR;
+		VehicleTypeEnum vehicleType = VehicleTypeEnum.CAR;
 		String badge = "EGH-761";
 		Integer engineCapacity = 0;
 		
@@ -57,13 +55,11 @@ public class ParkingMock {
 		
 		Integer position = 15;
 		GregorianCalendar checkIn = new GregorianCalendar(2019,1,10,22,0,0);
+		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,11,22,0,0);
 		
-		//TODO revisar checkOut
-		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,10,22,0,0);
+		ParkingStateEnum parkingState = ParkingStateEnum.CHECKED_IN;
 		
-		ParkingState parkingState = ParkingState.CHECKED_IN;
-		
-		VehicleType vehicleType = VehicleType.CAR;
+		VehicleTypeEnum vehicleType = VehicleTypeEnum.CAR;
 		String badge = "AGH-761";
 		Integer engineCapacity = 0;
 		
@@ -80,13 +76,11 @@ public class ParkingMock {
 		
 		Integer position = 15;
 		GregorianCalendar checkIn = new GregorianCalendar(2019,1,14,22,0,0);
+		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,11,22,0,0);
 		
-		//TODO revisar checkOut
-		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,10,22,0,0);
+		ParkingStateEnum parkingState = ParkingStateEnum.CHECKED_IN;
 		
-		ParkingState parkingState = ParkingState.CHECKED_IN;
-		
-		VehicleType vehicleType = VehicleType.CAR;
+		VehicleTypeEnum vehicleType = VehicleTypeEnum.CAR;
 		String badge = "AGH-761";
 		Integer engineCapacity = 0;
 		
@@ -103,13 +97,11 @@ public class ParkingMock {
 		
 		Integer position = 15;
 		GregorianCalendar checkIn = new GregorianCalendar(2019,1,10,22,0,0);
+		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,11,22,0,0);
 		
-		//TODO revisar checkOut
-		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,10,22,0,0);
+		ParkingStateEnum parkingState = ParkingStateEnum.CHECKED_IN;
 		
-		ParkingState parkingState = ParkingState.CHECKED_IN;
-		
-		VehicleType vehicleType = VehicleType.MOTORCYCLE;
+		VehicleTypeEnum vehicleType = VehicleTypeEnum.MOTORCYCLE;
 		String badge = "IGH-761";
 		Integer engineCapacity = 0;
 		
@@ -128,9 +120,9 @@ public class ParkingMock {
 		GregorianCalendar checkIn = new GregorianCalendar(2019,1,2,2,0,0);
 		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,2,12,0,0);
 		
-		ParkingState parkingState = ParkingState.CHECKED_IN;
+		ParkingStateEnum parkingState = ParkingStateEnum.CHECKED_IN;
 		
-		VehicleType vehicleType = VehicleType.MOTORCYCLE;
+		VehicleTypeEnum vehicleType = VehicleTypeEnum.MOTORCYCLE;
 		String badge = "AGH-761";
 		Integer engineCapacity = 650;
 		
@@ -149,9 +141,9 @@ public class ParkingMock {
 		GregorianCalendar checkIn = new GregorianCalendar(2018,11,31,20,0,0);
 		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,0,2,20,59,59);
 		
-		ParkingState parkingState = ParkingState.CHECKED_IN;
+		ParkingStateEnum parkingState = ParkingStateEnum.CHECKED_IN;
 		
-		VehicleType vehicleType = VehicleType.MOTORCYCLE;
+		VehicleTypeEnum vehicleType = VehicleTypeEnum.MOTORCYCLE;
 		String badge = "LGH-761";
 		Integer engineCapacity = 150;
 		
@@ -170,9 +162,9 @@ public class ParkingMock {
 		GregorianCalendar checkIn = new GregorianCalendar(2019,0,31,22,0,0);
 		GregorianCalendar checkOut = isCreate ? null : new GregorianCalendar(2019,1,2,1,0,0);
 		
-		ParkingState parkingState = ParkingState.CHECKED_IN;
+		ParkingStateEnum parkingState = ParkingStateEnum.CHECKED_IN;
 		
-		VehicleType vehicleType = VehicleType.CAR;
+		VehicleTypeEnum vehicleType = VehicleTypeEnum.CAR;
 		String badge = "AGH-761";
 		Integer engineCapacity = 0;
 		

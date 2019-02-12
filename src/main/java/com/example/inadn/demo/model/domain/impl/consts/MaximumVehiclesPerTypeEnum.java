@@ -1,12 +1,12 @@
 package com.example.inadn.demo.model.domain.impl.consts;
 
-public enum MaximumVehiclesPerType {
+public enum MaximumVehiclesPerTypeEnum {
 	CAR (20),
 	MOTORCYCLE (10);
 	
 	private final int maximum;
 
-	private MaximumVehiclesPerType(int maximum) {
+	private MaximumVehiclesPerTypeEnum(int maximum) {
 		this.maximum = maximum;
 	}
 

@@ -1,7 +1,10 @@
 package com.example.inadn.demo.model.impl;
 
-import com.example.inadn.demo.model.impl.consts.VehicleType;
+import com.example.inadn.demo.model.impl.consts.VehicleTypeEnum;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
+@JsonTypeName("motorcycle")
+//@JsonTypeName("vehicle")
 public class Motorcycle extends Vehicle{
 	
 	private Integer engineCapacity;
@@ -10,7 +13,7 @@ public class Motorcycle extends Vehicle{
 		super();
 	}
 
-	public Motorcycle(VehicleType type, String badge, Integer engineCapacity) {
+	public Motorcycle(VehicleTypeEnum type, String badge, Integer engineCapacity) {
 		super(type, badge);
 		this.engineCapacity = engineCapacity;
 	}

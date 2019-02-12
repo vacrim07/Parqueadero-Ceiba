@@ -1,12 +1,12 @@
 package com.example.inadn.demo.model.domain.impl.consts;
 
-public enum MotorcycleEngineCapacity {
+public enum MotorcycleEngineCapacityEnum {
 	
 	TOP (500);
 	
 	private final int value;
 
-	private MotorcycleEngineCapacity(int value) {
+	private MotorcycleEngineCapacityEnum(int value) {
 		this.value = value;
 	}
 

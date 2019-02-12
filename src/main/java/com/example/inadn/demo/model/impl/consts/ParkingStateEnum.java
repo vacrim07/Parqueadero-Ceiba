@@ -1,6 +1,6 @@
 package com.example.inadn.demo.model.impl.consts;
 
-public enum ParkingState {
+public enum ParkingStateEnum {
 	
 	CHECKED_IN ("checked in"),
 	CHECKED_OUT ("checked out"),
@@ -8,7 +8,7 @@ public enum ParkingState {
 	
 	private final String state;
 	
-	private ParkingState(String state) {
+	private ParkingStateEnum(String state) {
 		this.state = state;
 	}
 

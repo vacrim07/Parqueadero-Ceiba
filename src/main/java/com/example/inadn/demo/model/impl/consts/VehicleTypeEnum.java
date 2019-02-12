@@ -1,13 +1,13 @@
 package com.example.inadn.demo.model.impl.consts;
 
-public enum VehicleType {
+public enum VehicleTypeEnum {
 	
 	CAR ("car"),
 	MOTORCYCLE ("motorcycle");
 	
 	private final String type;
 	
-	private VehicleType(String type) {
+	private VehicleTypeEnum(String type) {
 		this.type = type;
 	}
 

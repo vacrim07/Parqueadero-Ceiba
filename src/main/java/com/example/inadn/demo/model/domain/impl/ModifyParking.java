@@ -6,28 +6,28 @@ import java.util.GregorianCalendar;
 
 import com.example.inadn.demo.model.domain.IPricing;
 import com.example.inadn.demo.model.domain.ITraffic;
-import com.example.inadn.demo.model.domain.impl.consts.DayHoursParking;
-import com.example.inadn.demo.model.domain.impl.consts.MotorcycleEngineCapacity;
-import com.example.inadn.demo.model.domain.impl.consts.PricingValues;
+import com.example.inadn.demo.model.domain.impl.consts.DayHoursParkingEnum;
+import com.example.inadn.demo.model.domain.impl.consts.MotorcycleEngineCapacityEnum;
+import com.example.inadn.demo.model.domain.impl.consts.PricingValuesEnum;
 import com.example.inadn.demo.model.impl.Money;
 import com.example.inadn.demo.model.impl.Motorcycle;
 import com.example.inadn.demo.model.impl.Parking;
 import com.example.inadn.demo.model.impl.Vehicle;
-import com.example.inadn.demo.model.impl.consts.ParkingState;
-import com.example.inadn.demo.model.impl.consts.VehicleType;
+import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
+import com.example.inadn.demo.model.impl.consts.VehicleTypeEnum;
 
-public class ModifyParkingStatus implements ITraffic, IPricing{
+public class ModifyParking implements ITraffic, IPricing{
 
 	private Parking parking;	
 	
-	public ModifyParkingStatus(Parking p) {
+	public ModifyParking(Parking p) {
 		super();
 		this.parking = p;
 		
 		run(this.parking);
 	}
 	
-	public ModifyParkingStatus() {
+	public ModifyParking() {
 		super();
 	}
 
@@ -53,7 +53,7 @@ public class ModifyParkingStatus implements ITraffic, IPricing{
 		
 		p.setPrice(money);
 		p.setPosition(vehicleCheckOut(this.parking.getPosition()));
-		p.setState(ParkingState.CHECKED_OUT);
+		p.setState(ParkingStateEnum.CHECKED_OUT);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class ModifyParkingStatus implements ITraffic, IPricing{
 	
 	@Override
 	public boolean isBonusMotorcycleRequired(Integer engineCapacity) {
-		return engineCapacity > MotorcycleEngineCapacity.TOP.getValue();
+		return engineCapacity > MotorcycleEngineCapacityEnum.TOP.getValue();
 	}
 
 	@Override
@@ -85,17 +85,17 @@ public class ModifyParkingStatus implements ITraffic, IPricing{
 		Integer hoursAdded = hours % 24;
 		Integer result;
 		
-		if(hoursAdded >= DayHoursParking.PARKING_DAY_START.getHours()) {
+		if(hoursAdded >= DayHoursParkingEnum.PARKING_DAY_START.getHours()) {
 			hoursAdded = 0;
 			days++;
 		}
 		
-		if(vehicleType.equalsIgnoreCase(VehicleType.CAR.getType())) {
-			result = days*PricingValues.DAY_CAR.getAmount() + hoursAdded*PricingValues.HOUR_CAR.getAmount();
+		if(vehicleType.equalsIgnoreCase(VehicleTypeEnum.CAR.getType())) {
+			result = days*PricingValuesEnum.DAY_CAR.getAmount() + hoursAdded*PricingValuesEnum.HOUR_CAR.getAmount();
 		}else {
-			result = days*PricingValues.DAY_MOTORCYCLE.getAmount() + hoursAdded*PricingValues.HOUR_MOTORCYCLE.getAmount();
+			result = days*PricingValuesEnum.DAY_MOTORCYCLE.getAmount() + hoursAdded*PricingValuesEnum.HOUR_MOTORCYCLE.getAmount();
 			if(bonus) {
-				result = result + PricingValues.EXTRA_MOTORCYCLE.getAmount();
+				result = result + PricingValuesEnum.EXTRA_MOTORCYCLE.getAmount();
 			}
 		}
 		

@@ -17,18 +17,18 @@ import com.example.inadn.demo.DemoApplication;
 import com.example.inadn.demo.model.domain.impl.mock.ParkingMock;
 import com.example.inadn.demo.model.impl.Motorcycle;
 import com.example.inadn.demo.model.impl.Parking;
-import com.example.inadn.demo.model.impl.consts.ParkingState;
-import com.example.inadn.demo.model.impl.consts.VehicleType;
+import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
+import com.example.inadn.demo.model.impl.consts.VehicleTypeEnum;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest (classes = DemoApplication.class)
-public class ModifyParkingStatusTest {
+public class ModifyParkingTest {
 	
-	ModifyParkingStatus modify;
+	ModifyParking modify;
 	
 	@Before
 	public void start() {
-		modify = new ModifyParkingStatus();
+		modify = new ModifyParking();
 	}
 	
 	@After
@@ -76,8 +76,8 @@ public class ModifyParkingStatusTest {
 	public void parkingPricing() {
 		
 		boolean bonus = true;
-		String car = VehicleType.CAR.getType();
-		String motorcycle = VehicleType.MOTORCYCLE.getType();
+		String car = VehicleTypeEnum.CAR.getType();
+		String motorcycle = VehicleTypeEnum.MOTORCYCLE.getType();
 		Integer timeOne = 10;
 		Integer timeTwo = 50;
 		Integer timeThree = 1;
@@ -100,7 +100,7 @@ public class ModifyParkingStatusTest {
 	}
 	
 	@Test
-	public void modifyParkingStatusResponse() {
+	public void modifyParkingResponse() {
 		
 		// Case 1 : CAR: OK
 		Parking p1 = new ParkingMock().getCase7(false);
@@ -109,27 +109,27 @@ public class ModifyParkingStatusTest {
 		// Case 3 : MOTORCYCLE: OK < 500 CC
 		Parking p3 = new ParkingMock().getCase6(false);
 		
-		ModifyParkingStatus response1 = new ModifyParkingStatus(p1);
-		ModifyParkingStatus response2 = new ModifyParkingStatus(p2);
-		ModifyParkingStatus response3 = new ModifyParkingStatus(p3);
+		ModifyParking response1 = new ModifyParking(p1);
+		ModifyParking response2 = new ModifyParking(p2);
+		ModifyParking response3 = new ModifyParking(p3);
 		
 		// Response 1
 		assertEquals(new Integer(27), response1.parkingHours(p1.getStartDate(), p1.getEndDate()));
 		assertEquals(false, response1.isBonusMotorcycleRequired(((Motorcycle) p1.getVehicle()).getEngineCapacity()));
 		assertEquals(new BigDecimal(11000), response1.getParking().getPrice().getAmount());
-		assertEquals(ParkingState.CHECKED_OUT.getState(), response1.getParking().getState().getState());
+		assertEquals(ParkingStateEnum.CHECKED_OUT.getState(), response1.getParking().getState().getState());
 		assertEquals(9, response1.getParking().getPosition().intValue());
 		// Response 2
 		assertEquals(new Integer(10), response2.parkingHours(p2.getStartDate(), p2.getEndDate()));
 		assertEquals(true, response2.isBonusMotorcycleRequired(((Motorcycle) p2.getVehicle()).getEngineCapacity()));
 		assertEquals(new BigDecimal(6000), response2.getParking().getPrice().getAmount());
-		assertEquals(ParkingState.CHECKED_OUT.getState(), response2.getParking().getState().getState());
+		assertEquals(ParkingStateEnum.CHECKED_OUT.getState(), response2.getParking().getState().getState());
 		assertEquals(5, response2.getParking().getPosition().intValue());
 		// Response 3
 		assertEquals(new Integer(48), response3.parkingHours(p3.getStartDate(), p3.getEndDate()));
 		assertEquals(false, response3.isBonusMotorcycleRequired(((Motorcycle) p3.getVehicle()).getEngineCapacity()));
 		assertEquals(new BigDecimal(8000), response3.getParking().getPrice().getAmount());
-		assertEquals(ParkingState.CHECKED_OUT.getState(), response3.getParking().getState().getState());
+		assertEquals(ParkingStateEnum.CHECKED_OUT.getState(), response3.getParking().getState().getState());
 		assertEquals(0, response3.getParking().getPosition().intValue());
 	}
 
