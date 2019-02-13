@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,9 +17,10 @@ import com.example.inadn.demo.model.impl.Parking;
 import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
 
 @RestController
+@RequestMapping("/parking")
 public class ParkingController {
 	
-	@PostMapping("/parking")
+	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
     public Parking createParking(@RequestBody Parking parking) {
 		CreateParking c = new CreateParking(parking);		
@@ -36,7 +38,7 @@ public class ParkingController {
 	    return exception.getMessage();
 	}
 	
-	@PatchMapping("/parking")
+	@PatchMapping
 	@ResponseStatus(HttpStatus.OK)
     public Parking modifyParking(@RequestBody Parking parking) {
 		ModifyParking c = new ModifyParking(parking);		
