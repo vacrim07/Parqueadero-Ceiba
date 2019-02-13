@@ -118,18 +118,21 @@ public class ModifyParkingTest {
 		assertEquals(new BigDecimal(11000), response1.getParking().getPrice().getAmount());
 		assertEquals(ParkingStateEnum.CHECKED_OUT.getState(), response1.getParking().getState().getState());
 		assertEquals(9, response1.getParking().getPosition().intValue());
+		assertEquals(p1,response1.getParking());
 		// Response 2
 		assertEquals(new Integer(10), response2.parkingHours(p2.getStartDate(), p2.getEndDate()));
 		assertEquals(true, response2.isBonusMotorcycleRequired(((Motorcycle) p2.getVehicle()).getEngineCapacity()));
 		assertEquals(new BigDecimal(6000), response2.getParking().getPrice().getAmount());
 		assertEquals(ParkingStateEnum.CHECKED_OUT.getState(), response2.getParking().getState().getState());
 		assertEquals(5, response2.getParking().getPosition().intValue());
+		assertEquals(p2,response2.getParking());
 		// Response 3
 		assertEquals(new Integer(48), response3.parkingHours(p3.getStartDate(), p3.getEndDate()));
 		assertEquals(false, response3.isBonusMotorcycleRequired(((Motorcycle) p3.getVehicle()).getEngineCapacity()));
 		assertEquals(new BigDecimal(8000), response3.getParking().getPrice().getAmount());
 		assertEquals(ParkingStateEnum.CHECKED_OUT.getState(), response3.getParking().getState().getState());
 		assertEquals(0, response3.getParking().getPosition().intValue());
+		assertEquals(p3,response3.getParking());
 	}
 
 }

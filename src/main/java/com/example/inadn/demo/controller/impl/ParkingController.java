@@ -1,6 +1,8 @@
 package com.example.inadn.demo.controller.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,11 +17,14 @@ import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
 @RestController
 public class ParkingController {
 	
-	
+	@Autowired
+	public ParkingController(Parking parking) {
+		this.createParking(parking);
+	}
 	
 	@PostMapping("/parking")
 	@ResponseStatus(HttpStatus.CREATED)
-    public Parking createParking(@RequestBody Parking parking) { // JSON input
+    public Parking createParking(@RequestBody Parking parking) {
 		CreateParking c = new CreateParking(parking);		
 		if (!c.getParking().getState().getState().equalsIgnoreCase(ParkingStateEnum.CHECKED_IN.getState())) {
 			throw new CreateParkingException("You are not allowed to park here");
@@ -28,6 +33,7 @@ public class ParkingController {
 		}
 
     }
+	
 	
 	@ExceptionHandler
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
