@@ -42,8 +42,8 @@ public class ParkingControllerTest {
 	@Test
 	public void createParkingTestCarResponse201() throws Exception{
 		
-		String jsonRequest = new JsonRequestsMocks().getCaseCarIsOk();
-		String jsonResponse = new JsonResponseMocks().getCaseCarIsOk();
+		String jsonRequest = new JsonRequestsMocks().getCaseCarCreateOk();
+		String jsonResponse = new JsonResponseMocks().getCaseCarCreateOk();
 		
 		mockMvc.perform(MockMvcRequestBuilders.post("/parking")
 				.contentType(MediaType.APPLICATION_JSON_UTF8).content(jsonRequest))
@@ -54,7 +54,7 @@ public class ParkingControllerTest {
 	@Test
 	public void createParkingTestCarResponse400NotAllowedToPark() throws Exception{
 		
-		String jsonRequest = new JsonRequestsMocks().getCaseCarNotOk();
+		String jsonRequest = new JsonRequestsMocks().getCaseCarCreateNotOk();
 		
 		mockMvc.perform(MockMvcRequestBuilders.post("/parking")
 				.contentType(MediaType.APPLICATION_JSON_UTF8).content(jsonRequest))
@@ -66,8 +66,8 @@ public class ParkingControllerTest {
 	@Test
 	public void createParkingTestMotorcycleResponse201() throws Exception{
 		
-		String jsonRequest = new JsonRequestsMocks().getCaseMotorcycleOk();
-		String jsonResponse = new JsonResponseMocks().getCaseMotorcycleIsOk();
+		String jsonRequest = new JsonRequestsMocks().getCaseMotorcycleCreateOk();
+		String jsonResponse = new JsonResponseMocks().getCaseMotorcycleCreateOk();
 		
 		mockMvc.perform(MockMvcRequestBuilders.post("/parking")
 				.contentType(MediaType.APPLICATION_JSON_UTF8).content(jsonRequest))
@@ -78,13 +78,25 @@ public class ParkingControllerTest {
 	@Test
 	public void createParkingTestMotorcycleResponse400NotAllowedToPark() throws Exception{
 		
-		String jsonRequest = new JsonRequestsMocks().getCaseMotorcycleNotOk();
+		String jsonRequest = new JsonRequestsMocks().getCaseMotorcycleCreateNotOk();
 		
 		mockMvc.perform(MockMvcRequestBuilders.post("/parking")
 				.contentType(MediaType.APPLICATION_JSON_UTF8).content(jsonRequest))
 				.andExpect(MockMvcResultMatchers.status().isBadRequest())
 				.andExpect(MockMvcResultMatchers.content()
 				.string(MessagesEnum.NOT_ALLOWED.getMessage()));
+	}
+	
+	@Test
+	public void modifyParkingTestCarResponse200() throws Exception{
+		
+		String jsonRequest = new JsonRequestsMocks().getCaseCarModifyOk();
+		String jsonResponse = new JsonResponseMocks().getCaseCarModifyOk();
+		
+		mockMvc.perform(MockMvcRequestBuilders.patch("/parking")
+				.contentType(MediaType.APPLICATION_JSON_UTF8).content(jsonRequest))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.content().json(jsonResponse));
 	}
 
 }
