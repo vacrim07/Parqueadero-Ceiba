@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.example.inadn.demo.DemoApplication;
+import com.example.inadn.demo.controller.impl.consts.MessagesEnum;
 import com.example.inadn.demo.controller.impl.mock.JsonRequestsMocks;
 import com.example.inadn.demo.controller.impl.mock.JsonResponseMocks;
 
@@ -31,7 +32,7 @@ public class ParkingControllerTest {
 	}
 	
 	@Test
-	public void createParkingTestResponse400() throws Exception{
+	public void createParkingTestResponse400NoPayload() throws Exception{
 		
 		mockMvc.perform(MockMvcRequestBuilders.post("/parking")
 				.contentType(MediaType.APPLICATION_JSON_UTF8))
@@ -48,6 +49,19 @@ public class ParkingControllerTest {
 				.contentType(MediaType.APPLICATION_JSON_UTF8).content(jsonRequest))
 				.andExpect(MockMvcResultMatchers.status().isCreated())
 				.andExpect(MockMvcResultMatchers.content().json(jsonResponse));
+	}
+	
+	@Test
+	public void createParkingTestResponse400NotAllowedToPark() throws Exception{
+		
+		String jsonRequest = new JsonRequestsMocks().getCaseCarNotOk();
+		String jsonResponse = new JsonResponseMocks().getCaseCarIsOk();
+		
+		mockMvc.perform(MockMvcRequestBuilders.post("/parking")
+				.contentType(MediaType.APPLICATION_JSON_UTF8).content(jsonRequest))
+				.andExpect(MockMvcResultMatchers.status().isBadRequest())
+				.andExpect(MockMvcResultMatchers.content()
+				.string(MessagesEnum.NOT_ALLOWED.getMessage()));
 	}
 
 }
