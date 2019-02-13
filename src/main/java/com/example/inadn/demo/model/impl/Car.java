@@ -16,7 +16,6 @@ public class Car extends Vehicle implements Serializable{
 
 	public Car(VehicleTypeEnum name, String badge) {
 		super(name, badge);
-		// TODO Auto-generated constructor stub
 	}
 	
 	

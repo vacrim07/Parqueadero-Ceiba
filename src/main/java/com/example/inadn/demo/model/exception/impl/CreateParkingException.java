@@ -3,7 +3,7 @@ package com.example.inadn.demo.model.exception.impl;
 public class CreateParkingException extends RuntimeException{
 	
 	private static final long serialVersionUID= 1L;
-	
+
 	private String message;
 
 	public CreateParkingException(String message) {
@@ -11,11 +11,12 @@ public class CreateParkingException extends RuntimeException{
 		this.message = message;
 	}
 
+	@Override
 	public String getMessage() {
 		return message;
 	}
 
-	public void setMessage(String message) {
+	public final void setMessage(String message) {
 		this.message = message;
 	}
 }
