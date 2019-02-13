@@ -98,5 +98,17 @@ public class ParkingControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isOk())
 				.andExpect(MockMvcResultMatchers.content().json(jsonResponse));
 	}
+	
+	@Test
+	public void modifyParkingTestMotorcycleResponse200() throws Exception{
+		
+		String jsonRequest = new JsonRequestsMocks().getCaseMotorcycleModifyOk();
+		String jsonResponse = new JsonResponseMocks().getCaseMotorcycleModifyOk();
+		
+		mockMvc.perform(MockMvcRequestBuilders.patch("/parking")
+				.contentType(MediaType.APPLICATION_JSON_UTF8).content(jsonRequest))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.content().json(jsonResponse));
+	}
 
 }
