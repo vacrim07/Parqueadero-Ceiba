@@ -74,17 +74,17 @@ public class ParkingControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isCreated())
 				.andExpect(MockMvcResultMatchers.content().json(jsonResponse));
 	}
-//	
-//	@Test
-//	public void createParkingTestMotorcycleResponse400NotAllowedToPark() throws Exception{
-//		
-//		String jsonRequest = new JsonRequestsMocks().getCaseMotorcycleNotOk();
-//		
-//		mockMvc.perform(MockMvcRequestBuilders.post("/parking")
-//				.contentType(MediaType.APPLICATION_JSON_UTF8).content(jsonRequest))
-//				.andExpect(MockMvcResultMatchers.status().isBadRequest())
-//				.andExpect(MockMvcResultMatchers.content()
-//				.string(MessagesEnum.NOT_ALLOWED.getMessage()));
-//	}
+	
+	@Test
+	public void createParkingTestMotorcycleResponse400NotAllowedToPark() throws Exception{
+		
+		String jsonRequest = new JsonRequestsMocks().getCaseMotorcycleNotOk();
+		
+		mockMvc.perform(MockMvcRequestBuilders.post("/parking")
+				.contentType(MediaType.APPLICATION_JSON_UTF8).content(jsonRequest))
+				.andExpect(MockMvcResultMatchers.status().isBadRequest())
+				.andExpect(MockMvcResultMatchers.content()
+				.string(MessagesEnum.NOT_ALLOWED.getMessage()));
+	}
 
 }
