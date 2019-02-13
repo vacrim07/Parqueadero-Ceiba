@@ -49,6 +49,7 @@ public class ModifyParking implements ITraffic, IPricing{
 		Integer parkingTime = parkingHours(this.parking.getStartDate(), this.parking.getEndDate());
 		boolean bonusCondition = isBonusMotorcycleRequired(engineCapacity);
 		BigDecimal price = parkingPricing(parkingTime,vehicleType,bonusCondition);
+		money.setCurrency("COP");
 		money.setAmount(price);
 		
 		p.setPrice(money);

@@ -1,7 +1,6 @@
 package com.example.inadn.demo.model.domain.impl;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 import java.util.Calendar;
 
@@ -155,7 +154,7 @@ public class CreateParkingTest {
 		assertEquals(false, response1.isBadgeRestricted(response1.getParking().getVehicle().getBadge()));
 		assertEquals(false, response1.isARestrictedDay(response1.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingStateEnum.NOT_ALLOWED.getState(), response1.getParking().getState().getState());
-		assertNotEquals(p1,response1.getParking());
+		assertEquals(p1,response1.getParking());
 		// Response 2
 		assertEquals(new Integer(20), response2.getMaximumVehicles(VehicleTypeEnum.CAR.getType()));
 		assertEquals(true, response2.isParkingAvailable(p2.getPosition(), response2.getMaximumVehicles(VehicleTypeEnum.CAR.getType())));
@@ -171,7 +170,7 @@ public class CreateParkingTest {
 		assertEquals(true, response3.isBadgeRestricted(response3.getParking().getVehicle().getBadge()));
 		assertEquals(true, response3.isARestrictedDay(response3.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingStateEnum.NOT_ALLOWED.getState(), response3.getParking().getState().getState());
-		assertNotEquals(p3,response3.getParking());
+		assertEquals(p3,response3.getParking());
 		// Response 4
 		assertEquals(new Integer(10), response4.getMaximumVehicles(VehicleTypeEnum.MOTORCYCLE.getType()));
 		assertEquals(false, response4.isParkingAvailable(p4.getPosition(), response4.getMaximumVehicles(VehicleTypeEnum.MOTORCYCLE.getType())));
@@ -179,7 +178,7 @@ public class CreateParkingTest {
 		assertEquals(false, response4.isBadgeRestricted(response4.getParking().getVehicle().getBadge()));
 		assertEquals(false, response4.isARestrictedDay(response4.getParking().getStartDate().get(Calendar.DAY_OF_WEEK)));
 		assertEquals(ParkingStateEnum.NOT_ALLOWED.getState(), response4.getParking().getState().getState());
-		assertNotEquals(p4,response4.getParking());
+		assertEquals(p4,response4.getParking());
 		// Response 5
 		assertEquals(new Integer(10), response5.getMaximumVehicles(VehicleTypeEnum.MOTORCYCLE.getType()));
 		assertEquals(true, response5.isParkingAvailable(p5.getPosition(), response5.getMaximumVehicles(VehicleTypeEnum.MOTORCYCLE.getType())));
