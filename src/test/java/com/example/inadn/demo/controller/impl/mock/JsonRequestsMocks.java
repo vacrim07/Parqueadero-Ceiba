@@ -15,6 +15,20 @@ public class JsonRequestsMocks {
 			+ "\"2019-01-10@22:00:00.000+0000\",\"vehicle\":{\"type\":"
 			+ "\"car\",\"name\":\"car\",\"badge\":\"AGH-761\"},\"price\":"
 			+ "{\"amount\":0,\"currency\":\"COP\"}}";
+	
+	private String caseMotorcycleOk =
+			
+			"{\"position\":9,\"state\":\"checked in\",\"startDate\":"
+			+ "\"2019-01-10@22:00:00.000+0000\",\"vehicle\":{\"type\":"
+			+ "\"motorcycle\",\"name\":\"motorcycle\",\"badge\":\"AGH-761\","
+			+ "\"engineCapacity\":600},\"price\":{\"amount\":0,\"currency\":\"COP\"}}";
+	
+	private String caseMotorcycleNotOk =
+			
+			"{\"position\":19,\"state\":\"checked in\",\"startDate\":"
+			+ "\"2019-01-10@22:00:00.000+0000\",\"vehicle\":{\"type\":"
+			+ "\"motorcycle\",\"name\":\"motorcycle\",\"badge\":\"AGH-761\","
+			+ "\"engineCapacity\":600},\"price\":{\"amount\":0,\"currency\":\"COP\"}}";
 
 	public String getCaseCarIsOk() {
 		return caseCarIsOk;
@@ -23,6 +37,15 @@ public class JsonRequestsMocks {
 	public String getCaseCarNotOk() {
 		return caseCarNotOk;
 	}
+
+	public String getCaseMotorcycleOk() {
+		return caseMotorcycleOk;
+	}
+
+	public String getCaseMotorcycleNotOk() {
+		return caseMotorcycleNotOk;
+	}
+	
 	
 	
 }
