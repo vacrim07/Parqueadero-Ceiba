@@ -4,31 +4,33 @@ public class JsonRequestsMocks {
 	
 	private String caseCarCreateOk =
 			
-			"{\"position\":19,\"state\":\"checked in\",\"startDate\":"
-			+ "\"2019-00-31@22:00:00.000+0000\",\"vehicle\":{\"type\":"
-			+ "\"car\",\"name\":\"car\",\"badge\":\"AGH-761\"},\"price\":"
-			+ "{\"amount\":0,\"currency\":\"COP\"}}";
+			"{\"position\":1,\"state\":\"checked in\",\"startDate\":"
+			+ "\"2019-00-31@22:00:00.000+0000\",\"vehicle\":{\"id\":1,"
+			+ "\"type\":\"car\",\"name\":\"car\",\"badge\":\"AGH-761\"},"
+			+ "\"price\":{\"amount\":0,\"currency\":\"COP\"}}";
 
 	private String caseCarCreateNotOk = 
 			
-			"{\"position\":19,\"state\":\"checked in\",\"startDate\":"
-			+ "\"2019-01-10@22:00:00.000+0000\",\"vehicle\":{\"type\":"
-			+ "\"car\",\"name\":\"car\",\"badge\":\"AGH-761\"},\"price\":"
-			+ "{\"amount\":0,\"currency\":\"COP\"}}";
+			"{\"position\":26,\"state\":\"checked in\",\"startDate\":"
+			+ "\"2018-12-31@22:00:00.000+0000\",\"endDate\":null,\"price\":"
+			+ "{\"currency\":\"COP\",\"amount\":0},\"vehicle\":{\"type\":"
+			+ "\"car\",\"id\":21,\"name\":\"car\",\"badge\":\"AGH-761\"}}";
 	
 	private String caseMotorcycleCreateOk =
 			
-			"{\"position\":9,\"state\":\"checked in\",\"startDate\":"
-			+ "\"2019-01-10@22:00:00.000+0000\",\"vehicle\":{\"type\":"
-			+ "\"motorcycle\",\"name\":\"motorcycle\",\"badge\":\"AGH-761\","
-			+ "\"engineCapacity\":600},\"price\":{\"amount\":0,\"currency\":\"COP\"}}";
+			"{\"position\":2,\"state\":\"checked in\",\"startDate\":"
+			+ "\"2018-01-20@22:00:00.000+0000\",\"endDate\":null,\"price\":"
+			+ "{\"currency\":\"COP\",\"amount\":0},\"vehicle\":{\"type\":"
+			+ "\"motorcycle\",\"id\":1,\"name\":\"motorcycle\",\"badge\":"
+			+ "\"AGH-761\",\"engineCapacity\":600}}";
 	
 	private String caseMotorcycleCreateNotOk =
 			
-			"{\"position\":19,\"state\":\"checked in\",\"startDate\":"
-			+ "\"2019-01-10@22:00:00.000+0000\",\"vehicle\":{\"type\":"
-			+ "\"motorcycle\",\"name\":\"motorcycle\",\"badge\":\"AGH-761\","
-			+ "\"engineCapacity\":600},\"price\":{\"amount\":0,\"currency\":\"COP\"}}";
+			"{\"position\":14,\"state\":\"checked in\",\"startDate\":"
+			+ "\"2018-01-20@22:00:00.000+0000\",\"endDate\":null,\"price\":"
+			+ "{\"currency\":\"COP\",\"amount\":0},\"vehicle\":{\"type\":"
+			+ "\"motorcycle\",\"id\":14,\"name\":\"motorcycle\",\"badge\":"
+			+ "\"AGH-761\",\"engineCapacity\":600}}";
 	
 	private String caseCarModifyOk =
 			

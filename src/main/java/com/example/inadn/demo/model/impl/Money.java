@@ -3,6 +3,9 @@ package com.example.inadn.demo.model.impl;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Money implements Serializable{
 	
 	private static final long serialVersionUID= 1L;
@@ -12,11 +15,9 @@ public class Money implements Serializable{
 	private BigDecimal amount;
 
 	public Money() {
-		super();
 	}
 
 	public Money(String currency, BigDecimal amount) {
-		super();
 		this.currency = currency;
 		this.amount = amount;
 	}

@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import org.springframework.stereotype.Service;
+
 import com.example.inadn.demo.model.domain.IPricing;
 import com.example.inadn.demo.model.domain.ITraffic;
 import com.example.inadn.demo.model.domain.impl.consts.DayHoursParkingEnum;
@@ -16,6 +18,7 @@ import com.example.inadn.demo.model.impl.Vehicle;
 import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
 import com.example.inadn.demo.model.impl.consts.VehicleTypeEnum;
 
+@Service
 public class ModifyParking implements ITraffic, IPricing{
 
 	private Parking parking;	

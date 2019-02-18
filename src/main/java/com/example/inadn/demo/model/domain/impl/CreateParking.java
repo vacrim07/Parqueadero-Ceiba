@@ -3,7 +3,7 @@ package com.example.inadn.demo.model.domain.impl;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
+import org.springframework.stereotype.Service;
 import com.example.inadn.demo.model.domain.IAllowedVehicles;
 import com.example.inadn.demo.model.domain.IMaximumVehicles;
 import com.example.inadn.demo.model.domain.impl.consts.BadgeRestrictionEnum;
@@ -12,12 +12,12 @@ import com.example.inadn.demo.model.impl.Parking;
 import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
 import com.example.inadn.demo.model.impl.consts.VehicleTypeEnum;
 
+@Service
 public class CreateParking implements IAllowedVehicles, IMaximumVehicles{
 	
 	private Parking parking;
 
 	public CreateParking(Parking p) {
-		super();
 		this.parking = p;
 		
 		run(this.parking);
@@ -28,7 +28,7 @@ public class CreateParking implements IAllowedVehicles, IMaximumVehicles{
 		super();
 	}
 	
-	public Parking getParking() {
+	public Parking getParking() {		
 		return parking;
 	}
 
@@ -38,10 +38,12 @@ public class CreateParking implements IAllowedVehicles, IMaximumVehicles{
 	
 	public void run(Parking p) {
 		
+		this.parking = p;
+		
 		boolean state2;
 		
 		String vehicleType = this.parking.getVehicle().getName().getType();
-		Integer position = this.parking.getPosition();
+		Integer position = this.parking.getVehicle().getId();
 		String badge = this.parking.getVehicle().getBadge();
 		GregorianCalendar date = this.parking.getStartDate();
 		Integer day = date.get(Calendar.DAY_OF_WEEK);

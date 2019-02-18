@@ -2,13 +2,25 @@ package com.example.inadn.demo.model.impl;
 
 import java.io.Serializable;
 import java.util.GregorianCalendar;
+
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import com.example.inadn.demo.model.impl.consts.ParkingStateEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+@Entity
 public class Parking implements Serializable{
 	
 	private static final long serialVersionUID= 1L;
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer position;
 	
 	private ParkingStateEnum state;
@@ -19,8 +31,11 @@ public class Parking implements Serializable{
 	@JsonFormat(pattern="yyyy-MM-dd@HH:mm:ss.SSSZ")
 	private GregorianCalendar endDate;
 	
+	@Embedded
 	private Money price;
 
+	@OneToOne
+	@JoinColumn(name="vehicle")
 	private Vehicle vehicle;
 
 	public Parking() {
